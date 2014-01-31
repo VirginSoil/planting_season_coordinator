@@ -2,3 +2,5 @@ This is the part of Planting Season that serves the front end experience to user
 It takes JSON information served from the Planting Season API app, and translates it into Ember.js.
 
 Holla!
+
+URL: http://planting-season.herokupp.com
