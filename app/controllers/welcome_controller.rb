@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @bed = {"name" => "Tomatoes"}
+    @bed = "Tomato Bed Info"
   end
 end
