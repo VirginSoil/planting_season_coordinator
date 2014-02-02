@@ -10,9 +10,15 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
-//= require jquery_ujs
-//= require handlebars-1.1.2
-//= require ember-1.3.1
-//= require app
-//= require tests/runner
+//= require handlebars
+//= require ember
+//= require ember-data
+//= require_self
+//= require planting_season_coordinator
+
+// for more details see: http://emberjs.com/guides/application/
+window.PlantingSeasonCoordinator = Ember.Application.create({
+  LOG_TRANSITIONS: true
+});
