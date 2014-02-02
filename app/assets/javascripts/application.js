@@ -17,6 +17,7 @@
 //= require ember-data
 //= require_self
 //= require planting_season_coordinator
+//= require menus
 
 // for more details see: http://emberjs.com/guides/application/
 window.PlantingSeasonCoordinator = Ember.Application.create({
