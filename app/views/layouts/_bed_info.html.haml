@@ -1,6 +1,8 @@
 #bed-info-panel
-  %h2{:id => "bed-info-title"} Bed Info:
-  %p some things
+
+  %h2{:id => "bed-info-title"}
+    =@bed["name"] + " Info"
+  %p= "Notes: " + @bed["notes"]
   %p some things
   %p some things
   %p some things
