@@ -1,14 +1,12 @@
 #bed-view-panel
   %h2
-    =@bed
+    =@bed['name']
   %table
     %th
     %tb
-      %tr{:class => "bed-table-row"}
-        %td hello
-        %td world
-        %td what's
-      %tr{:class => "bed-table-row"}
-        %td going
-        %td on
-        %td fools
+      -@depth.times do
+        %tr{:class => "bed-table-row"}
+        -@width.times do
+          %td
+            %img{:src => "http://www.placekitten.com/200/200"}
+  = render partial: 'layouts/bed_view_form'
