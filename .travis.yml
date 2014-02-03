@@ -2,4 +2,6 @@ language: ruby
 rvm:
   - "2.0.0-p353"
 script:
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
   - bundle exec rspec
