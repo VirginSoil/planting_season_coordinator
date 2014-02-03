@@ -1,4 +1,6 @@
-$('#add-to-garden').click(function(e) {
-  e.preventDefault();
-  alert("UR MOM");
-})
+$(function() {
+  $('#add-to-garden').on("click", function(e) {
+    e.preventDefault();
+    alert("yo");
+  });
+});
