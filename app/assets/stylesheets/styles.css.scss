@@ -1,0 +1,77 @@
+body {
+  background: #fafafa;
+}
+
+.header {
+  background: #222;
+  height: 40px;
+  padding: 10px 20px;
+
+  .menu-toggle {
+    display: block;
+    background: image-url('icon-menu.png') no-repeat top left;
+    text-indent: -9999px;
+    width: 28px;
+    height: 28px;
+    float: left;
+    margin-top: 8px;
+  }
+
+  .logo {
+    float: left;
+    margin-top: 5px;
+    margin-left: 20px;
+
+    a {
+      background: image-url('logo.png') no-repeat left top;
+      display: block;
+      text-indent: -9999px;
+      width: 178px;
+      height: 26px;
+    }
+  }
+
+  .greeting {
+    font-size: 20px;
+    margin-top: 8px;
+    float: right;
+    color: #fafafa;
+    font-style: italic;
+    color: #ddd;
+
+    a {
+      color: #ddd;
+      font-style: normal;
+      text-decoration: none;
+      &:hover {
+        color: #fafafa;
+      }
+    }
+  }
+}
+
+.content {
+  padding: 20px;
+
+  h1 {
+    font-size: 44px;
+  }
+}
+
+.my-gardens {
+  margin-top: 20px;
+
+  .garden {
+    border: dotted 2px #ddd;
+    float: left;
+    width: 300px;
+    height: 248px;
+    border-radius: 4px;
+    background: image-url('icon-add-garden.png') no-repeat center center;
+    display: block;
+    &:hover {
+      cursor: pointer;
+      border: solid 2px #36ff3b;
+    }
+  }
+}

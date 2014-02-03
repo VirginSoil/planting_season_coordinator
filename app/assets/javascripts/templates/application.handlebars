@@ -1,12 +1,20 @@
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
   <h3>Menu</h3>
-  <a href="#">Celery seakale</a>
-  <a href="#">Dulse daikon</a>
-  <a href="#">Zucchini garlic</a>
-  <a href="#">Catsear azuki bean</a>
-  <a href="#">Dandelion bunya</a>
+  <a href="#">My Gardens</a>
+  <a href="#">My Account</a>
+  <a href="#">Logout</a>
 </nav>
 <div class="header">
-  <a href="#" id="showLeftPush">Show Left</a>
+  <a href="#" id="showLeftPush" class="menu-toggle">Menu</a>
+  <h1 class="logo">
+    {{#link-to index}}Planting Season{{/link-to}}
+  </h1>
+  <div class="greeting">
+    <span>Hello, Tyler Long!</span>
+    <a href="#">Logout</a>
+  </div>
 </div>
-{{outlet}}
+
+<div class="content">
+  {{outlet}}
+</div>

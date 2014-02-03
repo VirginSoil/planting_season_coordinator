@@ -1,7 +1,12 @@
-<div class="header">
+<h1>My Gardens</h1>
+
+<div class="my-gardens">
   <ul>
   {{#each item in model}}
     <li>{{item}}</li>
+  {{else}}
+    <a class="create garden">
+    </a>
   {{/each}}
   </ul>
 </div>
