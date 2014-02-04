@@ -1,3 +1,5 @@
 PlantingSeasonCoordinator::Application.routes.draw do
-  root "welcome#index"
+  scope "my-gardens" do
+    root "welcome#index"
+  end
 end
