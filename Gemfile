@@ -15,6 +15,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'vcr'
 end
 
 group :development do
