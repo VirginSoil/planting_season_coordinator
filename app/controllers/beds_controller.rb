@@ -5,6 +5,13 @@ class BedsController < ApplicationController
   end
 
   def create
-    redirect_to :back
+    status, @bed = Bed.create(params[:bed])
+    if status == 201
+      flash[:success] = "YOU WIN!"
+      redirect_to beds_path
+    else
+      flash[:error] = "LAME."
+      render :new
+    end
   end
 end
