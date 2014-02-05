@@ -7,10 +7,17 @@ $(function() {
     y = $('#planting_column').val();
     plant = $('#planting_plants').val();
     bed_id = 1;
-    queryData = {planting: { row: x, column: y, plant_id: plant, bed_id: bed_id}};
+    queryData = {
+      planting: {
+        row: x,
+        column: y,
+        plant_id: plant,
+        bed_id: bed_id,
+      }
+    };
 
     $.ajax({
-      url: 'http://localhost:9293/api/v1/plantings',
+      url: '/api/v1/plantings',
       type: 'POST',
       dataType: 'json',
       data: queryData,
@@ -19,8 +26,8 @@ $(function() {
         debugger;
       },
       error: function(response) {
-        debugger;
         alert('failure!');
+        debugger;
       }
     });
   });
