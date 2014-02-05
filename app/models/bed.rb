@@ -25,7 +25,7 @@ class Bed
     @notes   = data["notes"]
     @depth   = data["depth"]
     @width   = data["width"]
-  end
+  end 
 
   def self.client
     Faraday.new(:url => "http://localhost:8080/api/v1")

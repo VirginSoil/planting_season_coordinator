@@ -12,6 +12,6 @@ class BedsController < ApplicationController
     else
       flash[:error] = "LAME."
       render :new
-    end
+    end 
   end
 end
