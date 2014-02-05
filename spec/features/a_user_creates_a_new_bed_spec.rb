@@ -2,11 +2,6 @@ require 'spec_helper'
 
 feature "Bed-info" do 
 
-  # before :each do
-  #   page.driver.browser.set_cookie 'user_id=1'
-  # end
-
-
   scenario "on new bed page" do 
     visit "/beds/new"
     within ".bed-info" do 
