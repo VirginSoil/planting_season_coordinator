@@ -1,0 +1,16 @@
+.bed-info
+  = form_for @beds do |bed|
+    = bed.label :name, "Bed Name"
+    = bed.text_field :name
+    = bed.label :zipcode, " Zipcode"
+    = bed.text_field :zipcode
+    = bed.label :notes, "Notes"
+    = bed.text_area :notes
+    = bed.label :width, "Width"
+    = bed.text_field :width
+    = bed.label :depth, "Depth"
+    = bed.text_field :depth
+    = bed.submit "Create Your Garden Now!"
+
+
+
