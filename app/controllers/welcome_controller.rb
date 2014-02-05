@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   def index
-    response = Faraday.get('http://localhost:9293/api/v1/beds/1')
+    response = Faraday.get("http://localhost:3002/api/v1/beds/1")
+
     @bed = JSON.parse(response.body)
     @width = @bed["width"]
     @depth = @bed["depth"]
