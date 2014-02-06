@@ -23,4 +23,15 @@ $(function(){
     $('li#info a').css("background-color", "#bbb");
     $('li#actions a').css("background-color", "#bbb");
   });
+
+  $('td').click(function(e){
+    var element = $(e.currentTarget);
+    if ($(this).attr("class") == 'square-foot active') {
+      element.attr('class', 'square-foot');
+      element.css('background-color', 'green');
+    } else {
+      element.attr('class', 'square-foot active');
+      element.css('background-color', 'white');
+    }
+  });
 });
