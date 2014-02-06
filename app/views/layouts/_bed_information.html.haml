@@ -1,7 +1,10 @@
 .bed-information
-  .p Bed name Here
-  .p Bed Zone here
-  .p Bed Notes Here
-  .p Bed Notfications here
+  %h4 Name:
+  = @bed['name']
+  %h4 Notes:
+  = @bed['notes']
+  %br
+  %br
+  %p <em>Bed Notfications are *off*.</em>
 
-  
+
