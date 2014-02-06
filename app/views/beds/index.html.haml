@@ -1,16 +1,26 @@
 %body
-  #bed-functions
-    %h1 Tabs
-    %ul
-      %li#info
-        %a{href: "#"} Bed Info
-      %li#actions
-        %a{href: "#"} Plant Actions
-      %li#new-plant
-        %a{href: "#"} New Plant
-  #content
-    = render :partial => "./layouts/bed_information"
-    = render :partial => "./layouts/plant_actions"
-    = render :partial => "./layouts/new_plant"
+  #body-content
+    #bed-grid-panel
+      %h2 Viewing Your Bed
+      %table 
+        %tbody
+          %tr
+            %td a
+            %td b
+            %td c
+
+          %tr
+            %td a
+            %td b
+            %td c
+
+          %tr
+            %td a
+            %td b
+            %td c
+    #bed-function-panel
+      = render :partial => "./welcome/bed_functions"
+      = render :partial => "./welcome/bed_content_tabs"
+      
 
   

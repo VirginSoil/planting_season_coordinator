@@ -1,0 +1,15 @@
+#bed-grid-panel, #bed-function-panel {
+  display: inline;
+}
+
+#bed-grid-panel {
+  float: left;
+}
+
+#bed-function-panel {
+  float: right;
+}
+
+#content {
+  width: 35%;
+}
