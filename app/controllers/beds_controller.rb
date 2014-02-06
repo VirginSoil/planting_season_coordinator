@@ -12,7 +12,7 @@ class BedsController < ApplicationController
     else
       @bed = Bed.new
       flash[:error] = "LAME."
-      render :new
+      redirect_to beds_path
     end 
   end
 end

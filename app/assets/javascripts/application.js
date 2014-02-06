@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require handlebars-1.1.2
-//= require ember-1.3.1
-//= require app
-//= require tests/runner
+// require handlebars-1.1.2
+// require ember-1.3.1
+// require app
+// require tests/runner
+//= require beds
