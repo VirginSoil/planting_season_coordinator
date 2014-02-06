@@ -10,6 +10,7 @@ class BedsController < ApplicationController
       flash[:success] = "YOU WIN!"
       redirect_to beds_path
     else
+      @bed = Bed.new
       flash[:error] = "LAME."
       render :new
     end 

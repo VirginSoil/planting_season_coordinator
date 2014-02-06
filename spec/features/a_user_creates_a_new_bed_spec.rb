@@ -12,5 +12,6 @@ feature "Bed-info" do
       fill_in "Depth", with: 5
       click_on "Create Your Garden Now"
    end
+   expect(page).to have_content("YOU WIN!")
   end
 end

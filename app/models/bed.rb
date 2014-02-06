@@ -11,11 +11,11 @@ class Bed
 
   def self.create(attributes)
     status, data = client.post do |req|
-      req.url '/beds'
+      req.url '/api/v1/beds'
       req.headers['Content-Type'] = 'application/json'
-      req.body = attributes.as_json
+      req.body = attributes.as_json.to_s
     end
-    [status, new(data)]
+    [status, (data)]
   end
 
   def initialize(data = {})
@@ -28,7 +28,7 @@ class Bed
   end 
 
   def self.client
-    Faraday.new(:url => "http://localhost:8080/api/v1")
+    Faraday.new(:url => "http://localhost:3002")
   end
 
 

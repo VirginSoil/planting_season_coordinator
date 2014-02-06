@@ -1,0 +1,25 @@
+#site-logo{
+  display: inline;
+}
+
+#navbar {
+  display: inline;
+}
+
+#site-logo h1{
+  display: inline;
+}
+
+#nav-links {
+  float: right;
+  display: inline;
+}
+
+#nav-links ul li {
+
+  display: inline;
+}
+
+#nav-links ul {
+  display: inline;
+}
