@@ -1,0 +1,65 @@
+  #bed-functions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+
+  #bed-functions li {
+    float: left;
+    border: 1px solid #bbb;
+    border-bottom-width: 0;
+    margin: 0;
+    }
+
+  #bed-functions a {
+    text-decoration: none;
+    display: block;
+    background: #eee;
+    padding: 0.24em 1em;
+    color: #00c;
+    width: 8em;
+    text-align: center;
+    }
+
+  #bed-functions a:hover {
+    background: #ddf;
+  }
+
+  #bed-functions #selected {
+    border-color: black;
+  }
+
+  #bed-functions #selected a {
+    position: relative;
+    top: 1px;
+    background: white;
+    color: black;
+    font-weight: bold;
+  }
+
+  #content {
+    border: 1px solid black;
+    clear: both;
+    padding: 0 1em;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0 0 1em 0;
+  }
+
+  .bed-information {
+
+  }
+
+  .plant-actions {
+    display: none;
+  }
+
+  .new-plant {
+    display: none;
+  }
+
+li#info a {
+  background-color: green;
+}

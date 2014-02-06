@@ -1,0 +1,22 @@
+%body
+  #body-content
+    #bed-grid-panel
+      %h2 Viewing Your Bed
+      %table
+        %tbody
+          - @width.times do
+            %tr
+              - @depth.times do
+                %td{:class => "square-foot"}
+                  askdaksdj
+          // %tr
+          //   %td a
+          //   %td b
+          //   %td c
+
+    #bed-function-panel
+      = render :partial => "./welcome/bed_functions"
+      = render :partial => "./welcome/bed_content_tabs"
+
+
+

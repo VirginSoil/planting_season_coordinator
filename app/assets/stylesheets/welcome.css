@@ -1,0 +1,13 @@
+#bed-grid-panel, #bed-function-panel {
+  display: inline;
+}
+
+#bed-grid-panel {
+  float: left;
+  margin-left: 30px;
+}
+
+#bed-function-panel {
+  float: right;
+  margin-right: 30px;
+}

@@ -16,6 +16,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'vcr'
 end
 
 group :development do
@@ -29,6 +30,8 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'launchy'
+  
 end
 
 group :production do

@@ -1,32 +1,30 @@
-class WelcomeController < ApplicationController
+class BedsController < ApplicationController
   def index
-    response = Faraday.get(client+'api/v1/beds/1')
-    # @bed = JSON.parse(response.body)
     @bed = valid_bed
     @width = @bed["width"]
     @depth = @bed["depth"]
   end
 
-  def create
-
+  def new
+    @bed = Bed.new
   end
 
-  def new
-
+  def create
+    status, @bed = Bed.create(params[:bed])
+    if status == 201
+      flash[:success] = "YOU WIN!"
+      redirect_to beds_path
+    else
+      @bed = Bed.new
+      flash[:error] = "LAME."
+      redirect_to beds_path
+    end
   end
 
   private
 
-  def planting_params
-    params.require(:planting).permit(:row, :column, :plants)
-  end
-
-
-  def client
-    "http://localhost:3002/"
-  end
-
   def valid_bed
     JSON.parse("{\"id\":1,\"name\":\"Tomatoes\",\"garden_id\":1,\"width\":3,\"depth\":2,\"created_at\":\"2014-01-30T18:06:29.733Z\",\"updated_at\":\"2014-02-03T23:59:36.844Z\",\"notes\":\"Plant cover crop after harvest.\"}")
   end
+
 end
