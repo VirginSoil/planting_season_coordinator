@@ -3,6 +3,7 @@ class BedsController < ApplicationController
     @bed = valid_bed
     @width = @bed["width"]
     @depth = @bed["depth"]
+    @taken_spots = [["0","0"], ["1","1"], ["2","2"], ["3","3"]]
   end
 
   def new

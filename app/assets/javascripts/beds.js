@@ -1,4 +1,33 @@
 $(function(){
+
+  var takenSpots = [["0","0"], ["1","1"], ["2","2"], ["3","3"], ["4", "4"], ["5", "5"]];
+
+  if (takenSpots.length > 0) {
+    var allTheSquares = $('.square-foot');
+    for (var i = 0; i < allTheSquares.length; i++) {
+      var thisOne = parseId($(allTheSquares[i]).attr('id'));
+      for (var j = 0; j < takenSpots.length; j++) {
+        if (arraysIdentical(takenSpots[j], thisOne)) {
+          // debugger;
+          $(allTheSquares[i]).append('<img src="http://www.placekitten.com/50/50">');
+        }
+      }
+    }
+  };
+
+  function parseId(id) {
+    return id.split("-").slice(1,3);
+  };
+
+  function arraysIdentical(a, b) {
+    var i = a.length;
+    if (i != b.length) return false;
+    while (i--) {
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
+  };
+
   $('#actions').click(function(){
     $('.plant-actions').css("display", "inline");
     $('.bed-information').css("display", "none");

@@ -7,6 +7,8 @@ table {
 .td {
   width: 10%;
   height: 10%;
+  margin: 0;
+  padding: 0;
 }
 .square-foot {
   border: 1px solid black;
