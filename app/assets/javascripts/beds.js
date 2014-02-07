@@ -8,6 +8,7 @@ $(function(){
       var thisOne = parseId($(allTheSquares[i]).attr('id'));
       for (var j = 0; j < takenSpots.length; j++) {
         if (arraysIdentical(takenSpots[j], thisOne)) {
+          $(allTheSquares[i]).attr("class", 'square-foot active planted');
           $(allTheSquares[i]).append('<img src="http://www.placekitten.com/50/50">');
         }
       }
@@ -29,38 +30,56 @@ $(function(){
   };
 
   $('#actions').click(function(){
-    $('.plant-actions').css("display", "inline");
-    $('.bed-information').css("display", "none");
-    $('.new-plant').css("display", "none");
-    $('li#actions a').css("background-color", "green");
-    $('li#info a').css("background-color", "#bbb");
-    $('li#new-plant a').css("background-color", "#bbb");
+    showPlantActionsPanel();
   });
   $('#info').click(function(){
+    showBedInfoPanel();
+  });
+  $('#new-plant').click(function(){
+    showNewPlantPanel();
+  });
+
+  function showBedInfoPanel() {
     $('.plant-actions').css("display", "none");
     $('.bed-information').css("display", "inline");
     $('li#info a').css("background-color", "green");
     $('li#actions a').css("background-color", "#bbb");
     $('li#new-plant a').css("background-color", "#bbb");
     $('.new-plant').css("display", "none");
-  });
-  $('#new-plant').click(function(){
+  }
+
+  function showPlantActionsPanel() {
+    $('.plant-actions').css("display", "inline");
+    $('.bed-information').css("display", "none");
+    $('.new-plant').css("display", "none");
+    $('li#actions a').css("background-color", "green");
+    $('li#info a').css("background-color", "#bbb");
+    $('li#new-plant a').css("background-color", "#bbb");
+  }
+
+  function showNewPlantPanel() {
     $('.plant-actions').css("display", "none");
     $('.bed-information').css("display", "none");
     $('.new-plant').css("display", "inline");
     $('li#new-plant a').css("background-color", "green");
     $('li#info a').css("background-color", "#bbb");
     $('li#actions a').css("background-color", "#bbb");
-  });
+  };
 
   $('td').click(function(e){
     var element = $(e.currentTarget);
-    if ($(this).attr("class") == 'square-foot active') {
-      element.attr('class', 'square-foot');
+    if ($(this).attr("class") == 'square-foot active planted') {
+      element.attr('class', 'square-foot active');
       element.css('background-color', 'green');
+      showPlantActionsPanel();
+    } else if ($(this).attr("class") == 'square-foot active') {
+      element.attr('class', 'square-foot');
+      element.css('background-color', 'white');
+      showBedInfoPanel();
     } else {
       element.attr('class', 'square-foot active');
-      element.css('background-color', 'white');
+      element.css('background-color', 'green');
+      showNewPlantPanel();
     }
   });
 });
