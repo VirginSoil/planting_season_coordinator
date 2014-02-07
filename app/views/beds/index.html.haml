@@ -18,4 +18,23 @@
   #taken-spots
     = @taken_spots
 
+  #all-plants
+    - @all_plants.each do |plant|
+      = "<div id=plant-#{plant['name']}>"
+      %ul
+        %li
+          =plant["name"]
+        %li
+          =plant["days_to_harvest"]
+        %li
+          =plant["age_of_transplant"]
+        %li
+          =plant["warm_season"]
+        %li
+          =plant["germination_temperature"]
+        %li
+          =plant["days_to_germination"]
+        %li
+          =plant["depth"]
+
 

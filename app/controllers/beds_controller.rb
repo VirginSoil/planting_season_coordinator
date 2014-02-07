@@ -12,6 +12,7 @@ class BedsController < ApplicationController
     # end
     # @plant_names = ["Beets", "Broccoli", "Cabbage", "Carrots", "Cauliflower", "Kohlrabi", "Leeks", "Lettuce (Leaf)", "Onions, Green", "Onions, Dry(seed)", "Parsnips", "Peas", "Potatoes", "Radish", "Spinach", "Swiss Chard", "Turnips", "Beans", "Cantaloupe", "Corn", "Cucumbers, untrellised", "Eggplant", "Pepper", "Tomato", "Squash, Summer", "Squash, Winter", "Watermelons"]
     @plant_names = all_plant_names
+    @all_plants = all_the_plants
     @taken_spots = [["0","0"], ["1","1"], ["2","2"], ["3","3"]]
   end
 
