@@ -1,6 +1,6 @@
 $(function(){
-
-  var takenSpots = [["0","0"], ["1","1"], ["2","2"], ["3","3"], ["4", "4"], ["5", "5"]];
+  var spots = $("#taken-spots").html();
+  var takenSpots = JSON.parse(spots);
 
   if (takenSpots.length > 0) {
     var allTheSquares = $('.square-foot');
@@ -8,7 +8,6 @@ $(function(){
       var thisOne = parseId($(allTheSquares[i]).attr('id'));
       for (var j = 0; j < takenSpots.length; j++) {
         if (arraysIdentical(takenSpots[j], thisOne)) {
-          // debugger;
           $(allTheSquares[i]).append('<img src="http://www.placekitten.com/50/50">');
         }
       }
@@ -17,6 +16,7 @@ $(function(){
 
   function parseId(id) {
     return id.split("-").slice(1,3);
+    // return id.split("-").slice(1,3).map(function(e) {return parseInt(e);});
   };
 
   function arraysIdentical(a, b) {

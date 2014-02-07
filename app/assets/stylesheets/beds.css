@@ -15,3 +15,7 @@ table {
   text-align: center;
   /*margin: 5px;/*/
 }
+
+#taken-spots {
+  display: none;
+}
