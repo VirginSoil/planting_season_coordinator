@@ -1,6 +1,4 @@
 .new-plant
   =form_for 'planting' do |f|
-    = f.select "row", collection: ["A", "B", "C"]
-    = f.select "column", collection: ["1", "2", "3"]
-    = f.select "plants", collection: ["Lettuce", "Potatoes", "Your mom"]
+    = f.select "plants", collection: @plant_names
     = f.submit "Add to Garden", {:id => "add-to-garden"}
