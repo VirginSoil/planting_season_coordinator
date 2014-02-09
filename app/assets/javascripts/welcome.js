@@ -36,13 +36,15 @@ $(function() {
     });
   });
 
-  $('#planting_plants').select(function() {
-    alert("plapl");
-    var plant = this.val();
+  $('select').change(function() {
+    var plant = $(this).val();
     showPlantInfo(plant);
   });
 
   function showPlantInfo(plantName) {
+    var slug = URLify(plantName);
+    var plantInfo = $("#" + slug);
+    $('#plant-info').html(plantInfo);
     debugger;
   }
 

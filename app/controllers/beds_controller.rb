@@ -35,7 +35,7 @@ class BedsController < ApplicationController
   private
 
   def valid_bed
-    JSON.parse("{\"id\":1,\"name\":\"Tomatoes\",\"garden_id\":1,\"width\":6,\"depth\":6,\"created_at\":\"2014-01-30T18:06:29.733Z\",\"updated_at\":\"2014-02-03T23:59:36.844Z\",\"notes\":\"Plant cover crop after harvest.\"}")
+    JSON.parse("{\"id\":1,\"name\":\"Tomatoes\",\"garden_id\":1,\"width\":12,\"depth\":12,\"created_at\":\"2014-01-30T18:06:29.733Z\",\"updated_at\":\"2014-02-03T23:59:36.844Z\",\"notes\":\"Plant cover crop after harvest.\"}")
   end
 
   def all_the_plants

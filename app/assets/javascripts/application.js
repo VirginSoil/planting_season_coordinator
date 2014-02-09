@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require urlify
 //= require welcome
 //= require beds

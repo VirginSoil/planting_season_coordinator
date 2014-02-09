@@ -8,7 +8,6 @@
             %tr
               - @depth.times do |j|
                 %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
-                  // %img{:src => "http://www.placekitten.com/50/50"}
       = render 'beds/bed_view_form'
 
     #bed-function-panel
@@ -20,21 +19,20 @@
 
   #all-plants
     - @all_plants.each do |plant|
-      = "<div id=plant-#{plant['name']}>"
-      %ul
+      %ul{:id => plant["name"].parameterize }
         %li
-          =plant["name"]
+          ="Name: #{plant['name']}"
         %li
-          =plant["days_to_harvest"]
+          ="Days to Harvest: #{plant['days_to_harvest']}"
         %li
-          =plant["age_of_transplant"]
+          ="Age to Transplant: #{plant['age_of_transplant']}"
         %li
-          =plant["warm_season"]
+          ="Warm Season Crop?: #{plant['warm_season']}"
         %li
-          =plant["germination_temperature"]
+          ="Germination Temperature: #{plant['germination_temperature']}"
         %li
-          =plant["days_to_germination"]
+          ="Days to Germination: #{plant['days_to_germination']}"
         %li
-          =plant["depth"]
+          ="Planting Depth: #{plant['depth']}\""
 
 
