@@ -43,12 +43,14 @@ $(function(){
     var element = $(e.currentTarget);
     var thisClass = $(this).attr("class");
     if ( thisClass == 'square-foot planted') {
+      if ($('.active').length > 0) { return; }
       selectPlanted(element);
     } else if (thisClass == 'square-foot active planted') {
       deselectPlanted(element);
     } else if (thisClass == 'square-foot active') {
       deselectUnplanted(element);
     } else {
+      if ($('.active').length > 0) { return; }
       selectUnplanted(element);
     }
   });
