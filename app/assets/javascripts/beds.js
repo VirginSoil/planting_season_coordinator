@@ -17,7 +17,6 @@ $(function(){
 
   function parseId(id) {
     return id.split("-").slice(1,3);
-    // return id.split("-").slice(1,3).map(function(e) {return parseInt(e);});
   };
 
   function arraysIdentical(a, b) {

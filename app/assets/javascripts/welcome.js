@@ -9,7 +9,7 @@ $(function() {
     x = parseId(thisSquareId)[0];
     y = parseId(thisSquareId)[1];
     plant = $('#planting_plants').val();
-    bed_id = 1;
+    bed_id = $('#bed-id').html().replace(/(\s+$|^\s+)/, "");
 
     queryData = {
       planting: {
