@@ -10,6 +10,7 @@
     = bed.text_field :width
     = bed.label :depth, "Depth"
     = bed.text_field :depth
+    = bed.hidden_field :user_id, value: @current_user_id
     = bed.submit "Create Your Garden Now!"
 
 

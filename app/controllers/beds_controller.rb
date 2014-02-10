@@ -19,11 +19,17 @@ class BedsController < ApplicationController
 
   def new
     @bed = Bed.new
+    @current_user_id = cookies[:user_id]
   end
 
   def create
-    status, @bed = Bed.create(params[:bed])
-    if status == 201
+    response = Faraday.post('http://localhost:8080/api/v1/beds') do |req|
+      request = params
+      puts "ASKDASDNMANSFJASKFOASGKAMWRIAOSIG #{request.inspect}"
+      req.body = params
+    end
+
+    if response.status == 201
       flash[:success] = "YOU WIN!"
       redirect_to root_path
     else
