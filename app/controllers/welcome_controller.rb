@@ -23,7 +23,7 @@ class WelcomeController < ApplicationController
 
 
   def client
-    "http://localhost:3002/"
+    "http://localhost:8080/"
   end
 
   def valid_bed

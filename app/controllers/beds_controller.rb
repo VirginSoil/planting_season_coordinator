@@ -1,5 +1,6 @@
 class BedsController < ApplicationController
   def index
+    make_sure_shes_got_a_bed
     @bed = valid_bed
     @width = @bed["width"]
     @depth = @bed["depth"]
@@ -24,15 +25,26 @@ class BedsController < ApplicationController
     status, @bed = Bed.create(params[:bed])
     if status == 201
       flash[:success] = "YOU WIN!"
-      redirect_to beds_path
+      redirect_to root_path
     else
       @bed = Bed.new
-      flash[:error] = "LAME."
-      redirect_to beds_path
+      flash[:error] = "You fargin' failed buddy."
+      render 'beds/new', :notice => "Error Will Robinson!"
     end
   end
 
   private
+
+  def make_sure_shes_got_a_bed
+    unless current_users_beds.length > 0
+      redirect_to new_bed_path, :notice => "Please create a bed first!"
+    end
+  end
+
+  def current_users_beds
+    response = Faraday.get("http://localhost:8080/api/v1/beds/for_user/#{cookies[:user_id]}")
+    JSON.parse(response.body)
+  end
 
   def valid_bed
     JSON.parse("{\"id\":1,\"name\":\"Tomatoes\",\"garden_id\":1,\"width\":12,\"depth\":12,\"created_at\":\"2014-01-30T18:06:29.733Z\",\"updated_at\":\"2014-02-03T23:59:36.844Z\",\"notes\":\"Plant cover crop after harvest.\"}")
