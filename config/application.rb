@@ -8,6 +8,6 @@ Bundler.require(:default, Rails.env)
 
 module PlantingSeasonCoordinator
   class Application < Rails::Application
-    config.assets.prefix = "/my-gardens/assets"
+    config.assets.prefix = "/dashboard/assets"
   end
 end
