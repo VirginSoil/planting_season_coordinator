@@ -26,12 +26,12 @@ $(function() {
       dataType: 'json',
       data: queryData,
       success: function(response) {
-        alert('success!');
         debugger;
+        $('.square-foot.active').attr('class', 'square-foot active planted');
+        $('.square-foot.active.planted').html('<img src="http://www.placekitten.com/50/50">');
       },
       error: function(response) {
-        alert('failure!');
-        debugger;
+        alert('There was a slight problem, Bobberino!');
       }
     });
   });
@@ -45,7 +45,6 @@ $(function() {
     var slug = URLify(plantName);
     var plantInfo = $("#" + slug);
     $('#plant-info').html(plantInfo);
-    debugger;
   }
 
   function parseId(id) {

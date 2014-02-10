@@ -9,15 +9,6 @@ class Bed
     false
   end
 
-  # def self.create(attributes)
-  #   status, data = client.post do |req|
-  #     req.url 'api/v1/beds'
-  #     req.headers['Content-Type'] = 'application/json'
-  #     req.body = attributes.as_json.to_s
-  #   end
-  #   [status, (data)]
-  # end
-
   def initialize(data = {})
     @id      = data["id"]
     @name    = data["name"]

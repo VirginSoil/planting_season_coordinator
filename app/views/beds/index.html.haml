@@ -8,7 +8,6 @@
             %tr
               - @depth.times do |j|
                 %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
-      = render 'beds/bed_view_form'
 
     #bed-function-panel
       = render :partial => "./welcome/bed_functions"
@@ -16,6 +15,9 @@
 
   #taken-spots
     = @taken_spots
+
+  #bed-id
+    = @bed["id"]
 
   #all-plants
     - @all_plants.each do |plant|

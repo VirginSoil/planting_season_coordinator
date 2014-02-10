@@ -47,6 +47,7 @@ $(function(){
     $('#bed-notes-form').css("display", "none");
     $('#bed-notes-form').val("");
     $('#edit-notes-button').css("display", "inline");
+    updateNotes(newNotes);
   });
 
   $('#actions').click(function(){
@@ -100,30 +101,46 @@ $(function(){
     $('li#new-plant a').css("background-color", "green");
     $('li#info a').css("background-color", "#bbb");
     $('li#actions a').css("background-color", "#bbb");
-  };
+  }
 
   function selectPlanted(element) {
     element.attr('class', 'square-foot active planted');
     element.css('background-color', 'green');
     showPlantActionsPanel();
-  };
+  }
 
   function deselectPlanted(element) {
     element.attr('class', 'square-foot planted');
     element.css('background-color', 'white');
     showBedInfoPanel();
-  };
+  }
 
   function selectUnplanted(element) {
     element.attr('class', 'square-foot active');
     element.css('background-color', 'green');
     showNewPlantPanel();
-  };
+  }
 
   function deselectUnplanted(element) {
     element.attr('class', 'square-foot');
     element.css('background-color', 'white');
     showBedInfoPanel();
+  }
+
+  function updateNotes(newNotes) {
+    var bedId = $('#bed-id').html().replace(/\s+/g, "");
+    var url = 'http://localhost:8080/api/v1/beds/' + bedId;
+    $.ajax({
+      url: 'api/v1/beds/' + bedId,
+      method: 'PATCH',
+      dataType: 'json',
+      data: {bed: {notes: newNotes}},
+      success: function(response) {
+      },
+      error: function(response) {
+        alert('There was a slight problem, Bobberino!');
+      }
+    });
   }
 
 
