@@ -29,6 +29,26 @@ $(function(){
     return true;
   };
 
+  $('#edit-notes-button').click(function(e){
+    e.preventDefault();
+    var notes = $("#loaded-notes").html().replace(/(\s+$|^\s+)/, "");
+    $("#loaded-notes").html("");
+    $('#save-notes-button').css("display", "inline");
+    $('#bed-notes-form').css("display", "inline");
+    $('#bed-notes-form').val(notes);
+    $('#edit-notes-button').css("display", "none");
+  });
+
+  $('#save-notes-button').click(function(e){
+    e.preventDefault();
+    var newNotes = $("#bed-notes-form").val();
+    $("#loaded-notes").html(newNotes);
+    $('#save-notes-button').css("display", "none");
+    $('#bed-notes-form').css("display", "none");
+    $('#bed-notes-form').val("");
+    $('#edit-notes-button').css("display", "inline");
+  });
+
   $('#actions').click(function(){
     showPlantActionsPanel();
   });

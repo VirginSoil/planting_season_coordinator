@@ -37,3 +37,7 @@ li {
 table {
   border-collapse: collapse;
 }
+
+#bed-notes-form, #save-notes-button {
+  display: none;
+}
