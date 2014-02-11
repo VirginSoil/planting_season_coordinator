@@ -90,7 +90,7 @@ class BedsController < ApplicationController
 
   def taken(bed)
     plantings_for_bed(bed).map do |planting|
-      [planting["x_coord"].to_s, planting["y_coord"].to_s]
+      [planting["x_coord"].to_s, planting["y_coord"].to_s, planting["slug"].to_s]
     end
   end
 

@@ -8,9 +8,12 @@ $(function(){
     for (var i = 0; i < allTheSquares.length; i++) {
       var thisOne = parseId($(allTheSquares[i]).attr('id'));
       for (var j = 0; j < takenSpots.length; j++) {
-        if (arraysIdentical(takenSpots[j], thisOne)) {
+        var takenCoords = [takenSpots[j][0], takenSpots[j][1]]
+        var slug = takenSpots[j][2];
+        if (arraysIdentical(takenCoords, thisOne)) {
           $(allTheSquares[i]).attr("class", 'square-foot planted');
-          $(allTheSquares[i]).append('<img src="http://localhost:8080/dashboard/assets/billy.jpg">');
+          $(allTheSquares[i]).append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+  
         }
       }
     }
@@ -73,7 +76,6 @@ $(function(){
   $('td').mousedown(function(e){
     e.preventDefault();
     window.isMouseDown = true;
-    // debugger;
     var element = $(e.currentTarget);
     var thisClass = $(this).attr("class");
     if ( thisClass == 'square-foot planted') {
@@ -196,7 +198,6 @@ $(function(){
       success: function(response) {
         var el = $('#planting-details');
         var slug = response['slug'];
-        debugger;
         var content = "<p>Planting date: " + response['planting_date'] + "</p>" +
           "<p>Harvested? " + response['harvested'] + "</p>" +
           $("#" + slug).html() + "<br />";
@@ -235,40 +236,49 @@ $(function(){
   }
 
   $('#add-to-garden').on("click", function(e) {
-    var thisSquare, thisSquareId, x, y, plant, bed_id, queryData;
+    var theseSquares, thisSquareId, x, y, plant, bed_id, queryData;
 
     e.preventDefault();
-    thisSquare = $('.square-foot.active')[0];
-    if (thisSquare === undefined) {alert("Please select a square!")}
-    thisSquareId = $(thisSquare).attr('id');
-    x = parseId(thisSquareId)[0];
-    y = parseId(thisSquareId)[1];
-    plant = $('#planting_plants').val();
-    bed_id = $('#bed-id').html().replace(/(\s+$|^\s+)/, "");
+    theseSquares = $('.square-foot.active');
+    if (theseSquares.length === 0) {
+      alert("Please select a square!")
+      return;
+    }
 
-    queryData = {
-      planting: {
-        x_coord: x,
-        y_coord: y,
-        plant_id: plant,
-        bed_id: bed_id,
-      }
+    for (var i = theseSquares.length - 1; i >= 0; i--) {
+      var thisSquare = theseSquares[i]
+    
+      thisSquareId = $(thisSquare).attr('id');
+      x = parseId(thisSquareId)[0];
+      y = parseId(thisSquareId)[1];
+      plant = $('#planting_plants').val();
+      bed_id = $('#bed-id').html().replace(/(\s+$|^\s+)/, "");
+
+      queryData = {
+        planting: {
+          x_coord: x,
+          y_coord: y,
+          plant_id: plant,
+          bed_id: bed_id,
+        }
+      };
+
+      $.ajax({
+        url: '/api/v1/plantings',
+        type: 'POST',
+        dataType: 'json',
+        data: queryData,
+        success: function(response) {
+          var slug = response["slug"];
+          $('.square-foot.active').attr('class', 'square-foot active planted');
+          $('.square-foot.active.planted').html('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+          showPlantActionsPanel();
+        },
+        error: function(response) {
+          alert('There was a slight problem, Bobberino!');
+        }
+      });
     };
-
-    $.ajax({
-      url: '/api/v1/plantings',
-      type: 'POST',
-      dataType: 'json',
-      data: queryData,
-      success: function(response) {
-        $('.square-foot.active').attr('class', 'square-foot active planted');
-        $('.square-foot.active.planted').html('<img src="http://localhost:8080/dashboard/assets/billy.jpg">');
-        showPlantActionsPanel();
-      },
-      error: function(response) {
-        alert('There was a slight problem, Bobberino!');
-      }
-    });
   });
 
   function showPlantInfo(plantName) {
