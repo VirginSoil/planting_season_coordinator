@@ -218,7 +218,7 @@ $(function(){
       success: function(response) {
         var element = $('.square-foot.active.planted');
         element.attr('class', 'square-foot');
-        element.html('');
+        element.children('span').html('');
         showBedInfoPanel();
       },
       error: function(response) {
@@ -233,12 +233,12 @@ $(function(){
     e.preventDefault();
     theseSquares = $('.square-foot.active');
     if (theseSquares.length === 0) {
-      alert("Please select a square!")
+      alert("Please select a square!");
       return;
     }
 
     for (var i = theseSquares.length - 1; i >= 0; i--) {
-      var thisSquare = theseSquares[i]
+      var thisSquare = theseSquares[i];
 
       thisSquareId = $(thisSquare).attr('id');
       x = parseId(thisSquareId)[0];
@@ -262,30 +262,14 @@ $(function(){
         data: queryData,
         success: function(response) {
           var slug = response["slug"];
-          $('.square-foot.active').html('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
-          $('.square-foot.active').css("background-color", "white");
-          $('.square-foot.active').attr('class', 'square-foot planted');
+          $('.square-foot.active span').append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+          $('.square-foot.active').removeClass('active').addClass('planted');
           showBedInfoPanel();
         },
         error: function(response) {
         }
       });
     };
-
-    $.ajax({
-      url: '/api/v1/plantings',
-      type: 'POST',
-      dataType: 'json',
-      data: queryData,
-      success: function(response) {
-        $('.square-foot.active').attr('class', 'square-foot active planted');
-        $('.square-foot.active.planted span').html('<img src="http://localhost:8080/dashboard/assets/billy.jpg">');
-        showPlantActionsPanel();
-      },
-      error: function(response) {
-        alert('There was a slight problem, Bobberino!');
-      }
-    });
   });
 
   function showPlantInfo(plantName) {
