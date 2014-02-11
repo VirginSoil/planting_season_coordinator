@@ -38,7 +38,12 @@ table {
   display: none;
 }
 
-#timeline {
-  clear: both;
-  padding-top: 1px;
+.bed-display-panel {
+  display: inline-block;
+  margin-right: 1%;
+}
+
+.bed-display-panel h4,
+.bed-display-panel img {
+  text-align: center;
 }

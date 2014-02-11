@@ -1,7 +1,13 @@
 class BedsController < ApplicationController
   def index
+    @beds = current_users_beds
+    session[:default_bed] ||= valid_bed['id']
+  end
+
+  def show
+    # raise params.inspect
     make_sure_shes_got_a_bed
-    @bed = valid_bed
+    @bed = params[:bed] && params[:bed][:bed_id] ? show_bed : default_bed
     @width = @bed["width"]
     @depth = @bed["depth"]
     @plant_names = all_plant_names
@@ -59,8 +65,13 @@ class BedsController < ApplicationController
     JSON.parse(response.body)
   end
 
-  def valid_bed
+  def default_bed
     response = Faraday.get("http://localhost:8080/api/v1/beds/default_for_user/#{cookies[:user_id]}")
+    JSON.parse(response.body)
+  end
+
+  def show_bed
+    response = Faraday.get("http://localhost:8080/api/v1/beds/#{params[:bed][:bed_id]}")
     JSON.parse(response.body)
   end
 

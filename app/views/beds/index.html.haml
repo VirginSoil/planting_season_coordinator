@@ -1,38 +1,9 @@
-.main-content.eight.columns
-  #bed-grid-panel
-    %table
-      %tbody
-        - @width.times do |i|
-          %tr
-            - @depth.times do |j|
-              %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
-    = render 'beds/bed_view_form'
-
-.side-content.four-columns
-  %div
-    = render :partial => "./welcome/bed_functions"
-    = render :partial => "./welcome/bed_content_tabs"
-
-  #bed-id
-    = @bed["id"]
-
-  #taken-spots
-    = @taken_spots
-
-  #all-plants
-    - @all_plants.each do |plant|
-      %ul{:id => plant["name"].parameterize }
-        %li
-          ="Name: #{plant['name']}"
-        %li
-          ="Days to Harvest: #{plant['days_to_harvest']}"
-        %li
-          ="Age to Transplant: #{plant['age_of_transplant']}"
-        %li
-          ="Warm Season Crop?: #{plant['warm_season']}"
-        %li
-          ="Germination Temperature: #{plant['germination_temperature']}"
-        %li
-          ="Days to Germination: #{plant['days_to_germination']}"
-        %li
-          ="Planting Depth: #{plant['depth']}\""
+%h2 Checkin' yo' bedzz
+%hr
+-@beds.each do |bed|
+  .bed-display-panel
+    =form_for Bed.new, url: { action: "show" }, method: :get do |f|
+      =f.hidden_field :bed_id, value: bed['id']
+      %h4
+        =bed['name']
+      %input{:type => "image", :src => "http://localhost:8080/dashboard/assets/billy.jpg", :width => "300px", :height => "300px", :alt => "Submit Form"}

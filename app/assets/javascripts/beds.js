@@ -9,7 +9,7 @@ $(function(){
       for (var j = 0; j < takenSpots.length; j++) {
         if (arraysIdentical(takenSpots[j], thisOne)) {
           $(allTheSquares[i]).attr("class", 'square-foot planted');
-          $(allTheSquares[i]).append('taken');
+          $(allTheSquares[i]).append('<img src="http://localhost:8080/dashboard/assets/billy.jpg">');
         }
       }
     }
@@ -233,7 +233,7 @@ $(function(){
       data: queryData,
       success: function(response) {
         $('.square-foot.active').attr('class', 'square-foot active planted');
-        $('.square-foot.active.planted').html('taken');
+        $('.square-foot.active.planted').html('<img src="http://localhost:8080/dashboard/assets/billy.jpg">');
         showPlantActionsPanel();
       },
       error: function(response) {
