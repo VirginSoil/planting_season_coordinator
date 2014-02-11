@@ -1,23 +1,17 @@
-#navbar
-  #site-logo
-    %h1 Planting Season
-  #nav-links
-    %ul
-      %li
-        %a{:href => "#"}
-          Notifications 
-        \- 
-      %li 
-        %a{:href => "#"}
-          Beds
-        \- 
-      %li 
-        %a{:href => "#"}
-          Profile
-        \-
-      %li 
-        %a{:href => "#"}
-          Logout
-
-%hr      
-
+%nav.header.six.columns
+  %ul
+    %li
+      %a.my-gardens{href: "#"}
+        My Gardens
+    %li
+      %a.notifications{href: "#"}
+        Notifications
+    %li.user.parent
+      %span Tyler Long
+      %ul.children
+        %li.child
+          %a{href: "#"}
+            Settings
+        %li.child
+          %a{href: "#"}
+            Logout

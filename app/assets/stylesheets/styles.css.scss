@@ -1,0 +1,202 @@
+//@import "../fonts/stylesheet.css";
+
+$nove_light: 'novecento_sans_widelight';
+$nove_book: 'novecento_sans_widebook';
+
+body {
+  //background: #fff url("../gardens.png") no-repeat center top;
+  //background: #fff url("../gardens.png") no-repeat right top;
+}
+
+.wrapper {
+  width: 100%;
+  &.header {
+    background: #f2f2f4;
+    border-bottom: solid 1px #dcdce2;
+  }
+}
+
+.row.full {
+  width: 100%;
+  border-bottom: solid 1px #dcdce2;
+}
+
+.main.row {
+  border-bottom: solid 1px #dfdfe4;
+  background: #f2f2f4;
+  padding: 0px 10px 0px 10px;
+}
+
+.logo {
+  margin-top: 27px;
+  margin-left: 10px;
+  float: left;
+  a {
+    background: image-url("logo.png") no-repeat top center;
+    display: block;
+    width: 186px;
+    height: 28px;
+    text-indent: -9999px;
+  }
+}
+
+nav.header {
+  ul {
+    margin: 0;
+    float: right;
+    li {
+      float: left;
+      list-style-type: none;
+      a {
+        display: block;
+        padding: 42px 42px 35px;
+        border-right: solid 1px #dfdfe4;
+        border-left: solid 1px #dfdfe4;
+      }
+      span {
+        float: left;
+      }
+      &.user {
+        padding: 25px 25px 20px;
+        font-family: $nove_light;
+        font-size: 20px;
+        background: image-url('icon-user-dropdown.png') right 40px no-repeat;
+        border-left: solid 1px #dfdfe4;
+      }
+      ul.children {
+        float: right;
+        li {
+          float: none;
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+$c: #e5e5e5;
+
+.garden-nav {
+  background: #fff;
+  .other-gardens {
+    padding-right: 0;
+  }
+
+  h1 {
+    padding: 25px 10px 9px;
+    font-family: $nove_light;
+    font-size: 26px;
+    color: #5b5e6d;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin: 0;
+    li {
+      list-style-type: none;
+    }
+  }
+
+  .gardens {
+    float: right;
+    border-left: solid 1px $c;
+    border-right: solid 1px $c;
+    li {
+      text-align: right;
+      color: #a5a5a5;
+      font-family: $nove_light;
+      font-size: 18px;
+      padding: 4px 20px 4px;
+      &:first-child {
+        padding-top: 5px;
+        border-bottom: solid 1px $c;
+      }
+    }
+  }
+
+  .prev-next {
+    float: right;
+    li {
+      &:first-child {
+        border-bottom: solid 1px $c;
+      }
+    }
+    a {
+      display: block;
+      width: 50px;
+      height: 37px;
+      &.prev {
+        background: image-url('icon-previous.png') no-repeat 22px 14px;
+        text-indent: -9999px;
+      }
+      &.next {
+        background: image-url('icon-next.png') no-repeat 22px 17px;
+        text-indent: -9999px;
+      }
+    }
+  }
+}
+
+.my-gardens {
+  display: block;
+  background: image-url('icon-leaf.png') center 34px no-repeat;
+  width: 22px;
+  height: 22px;
+  text-indent: -9999px;
+}
+
+.notifications {
+  display: block;
+  background: image-url('icon-bell.png') center 31px no-repeat;
+  width: 22px;
+  height: 22px;
+  text-indent: -9999px;
+}
+
+.garden-month {
+  background: #f2f2f4;
+  text-align: center;
+  a {
+    width: 5%;
+    text-indent: -9999px;
+    display: inline-block;
+    padding: 5px;
+  }
+  .month-year {
+    padding: 15px 0 11px;
+    font-family: $nove_light;
+    display: inline-block;
+    width: 88%;
+    color: #abb1c3;
+    font-size: 22px;
+  }
+  .month-previous {
+    background: image-url('icon-month-nav-left.png') 23px 2px no-repeat;
+  }
+  .month-next {
+    background: image-url('icon-month-nav-right.png') 30px 2px no-repeat;
+  }
+}
+
+.content {
+  padding: 20px;
+}
+
+.main-content {
+  background: #fafafa;
+  border-radius: 3px;
+  min-height: 200px;
+  table {
+    width: 100%;
+  }
+}
+
+.side-content {
+  padding: 0 0 0 15px;
+  div:first-child {
+    background: #fff;
+    border: solid 1px #dcdce2;
+    border-radius: 3px;
+    min-height: 200px;
+  }
+}

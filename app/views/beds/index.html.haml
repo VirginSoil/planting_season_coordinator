@@ -1,18 +1,17 @@
-%body
-  #body-content
-    #bed-grid-panel
-      %h2 Viewing Your Bed
-      %table
-        %tbody
-          - @width.times do |i|
-            %tr
-              - @depth.times do |j|
-                %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
-      = render 'beds/bed_view_form'
+.main-content.eight.columns
+  #bed-grid-panel
+    %table
+      %tbody
+        - @width.times do |i|
+          %tr
+            - @depth.times do |j|
+              %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
+    = render 'beds/bed_view_form'
 
-    #bed-function-panel
-      = render :partial => "./welcome/bed_functions"
-      = render :partial => "./welcome/bed_content_tabs"
+.side-content.four-columns
+  %div
+    = render :partial => "./welcome/bed_functions"
+    = render :partial => "./welcome/bed_content_tabs"
 
   #taken-spots
     = @taken_spots
@@ -34,5 +33,3 @@
           ="Days to Germination: #{plant['days_to_germination']}"
         %li
           ="Planting Depth: #{plant['depth']}\""
-
-
