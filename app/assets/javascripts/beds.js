@@ -145,7 +145,6 @@ $(function(){
 
   function selectPlanted(element) {
     element.attr('class', 'square-foot active planted');
-    element.css('background-color', 'green');
     $(element.children()[0]).css('opacity', '0.8');
     showPlantActionsPanel();
     showPlantingDetails(element);
@@ -158,7 +157,6 @@ $(function(){
 
   function selectUnplanted(element) {
     element.attr('class', 'square-foot active');
-    element.css("background-color", "green");
     showNewPlantPanel();
   }
 
