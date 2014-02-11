@@ -1,12 +1,13 @@
 #bed-functions
-  %ul.actions
-    %li#info
-      Bed Info
-    %li#actions
-      Plant Actions
-    %li#new-plant
-      New Plant
-  #content
+  .bed-actions
+    %ul.actions
+      %li.bed-info.action
+        Bed Info
+      %li.bed-actions.action.active
+        Plant Actions
+      %li.bed-new-plant.action
+        New Plant
+  .bed-content
     = render :partial => "beds/bed_information"
     = render :partial => "beds/plant_actions"
     = render :partial => "beds/new_plant"

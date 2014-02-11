@@ -83,7 +83,7 @@ $c: #e5e5e5;
   }
 
   h1 {
-    padding: 25px 10px 9px;
+    padding: 10px 10px 9px;
     font-family: $nove_light;
     font-size: 26px;
     color: #5b5e6d;
@@ -193,10 +193,96 @@ $c: #e5e5e5;
 
 .side-content {
   padding: 0 0 0 15px;
-  div:first-child {
+  & > div:first-child {
     background: #fff;
     border: solid 1px #dcdce2;
     border-radius: 3px;
     min-height: 200px;
   }
+}
+
+#bed-grid-panel {
+  table {
+    background: image-url('bg-bed.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  td {
+    border: solid 1px white;
+  }
+}
+
+.bed-actions {
+  text-align: center;
+  background: #e5e5e5;
+  padding: 0;
+}
+
+.actions {
+  overflow: hidden;
+  display: inline-block;
+  margin: 0;
+  padding: 5px 0;
+  li {
+    float: left;
+    font-family: $nove_book;
+    padding: 7px 20px 4px;
+    font-size: 20px;
+    &:hover {
+      cursor: pointer;
+      color: #2bd07e;
+    }
+  }
+}
+
+.bed-content {
+}
+
+.action.active {
+  background: #2bd07e;
+  color: #fff;
+  font-weight: bold;
+  &:hover {
+    cursor: default;
+    color: #fff;
+  }
+}
+
+.button {
+  padding: 15px 20px;
+  border: solid 1px #ddd;
+  border-radius: 3px;
+  color: #ddd;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: $nove_book;
+}
+
+.button.harvest {
+  background: #2bd07e;
+  &:hover {
+    color: #fff !important;
+  }
+}
+
+.plant-actions {
+  display: none;
+}
+
+.new-plant {
+  display: none;
+}
+
+.bed-content {
+  padding: 5px 20px;
+}
+
+.button {
+
+}
+
+.planting-details {
+  padding: 10px 0;
 }
