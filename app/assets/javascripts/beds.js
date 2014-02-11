@@ -12,8 +12,8 @@ $(function(){
         var slug = takenSpots[j][2];
         if (arraysIdentical(takenCoords, thisOne)) {
           $(allTheSquares[i]).attr("class", 'square-foot planted');
-          $(allTheSquares[i]).append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
-  
+          $(allTheSquares[i]).append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg" height="101%">');
+
         }
       }
     }
@@ -109,7 +109,7 @@ $(function(){
     }
   });
 
-  
+
   $(document)
     .mouseup(function () {
       window.isMouseDown = false;
@@ -146,6 +146,7 @@ $(function(){
   function selectPlanted(element) {
     element.attr('class', 'square-foot active planted');
     element.css('background-color', 'green');
+    $(element.children()[0]).css('opacity', '0.8');
     showPlantActionsPanel();
     showPlantingDetails(element);
   }
@@ -158,7 +159,7 @@ $(function(){
 
   function selectUnplanted(element) {
     element.attr('class', 'square-foot active');
-    element.css('background-color', 'green');
+    element.css("background-color", "green");
     showNewPlantPanel();
   }
 
@@ -247,7 +248,7 @@ $(function(){
 
     for (var i = theseSquares.length - 1; i >= 0; i--) {
       var thisSquare = theseSquares[i]
-    
+
       thisSquareId = $(thisSquare).attr('id');
       x = parseId(thisSquareId)[0];
       y = parseId(thisSquareId)[1];
@@ -270,12 +271,12 @@ $(function(){
         data: queryData,
         success: function(response) {
           var slug = response["slug"];
-          $('.square-foot.active').attr('class', 'square-foot active planted');
-          $('.square-foot.active.planted').html('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
-          showPlantActionsPanel();
+          $('.square-foot.active').html('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+          $('.square-foot.active').css("background-color", "white");
+          $('.square-foot.active').attr('class', 'square-foot planted');
+          showBedInfoPanel();
         },
         error: function(response) {
-          alert('There was a slight problem, Bobberino!');
         }
       });
     };
