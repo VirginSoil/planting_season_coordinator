@@ -12,8 +12,8 @@ $(function(){
         var slug = takenSpots[j][2];
         if (arraysIdentical(takenCoords, thisOne)) {
           $(allTheSquares[i]).attr("class", 'square-foot planted');
-          $(allTheSquares[i]).append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg" height="101%">');
-
+          var span = $(allTheSquares[i]).children('span');
+          $(span).append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
         }
       }
     }
@@ -153,7 +153,6 @@ $(function(){
 
   function deselectPlanted(element) {
     element.attr('class', 'square-foot planted');
-    element.css('background-color', 'white');
     showBedInfoPanel();
   }
 
@@ -165,7 +164,6 @@ $(function(){
 
   function deselectUnplanted(element) {
     element.attr('class', 'square-foot');
-    element.css('background-color', 'white');
     showBedInfoPanel();
   }
 
@@ -280,6 +278,21 @@ $(function(){
         }
       });
     };
+
+    $.ajax({
+      url: '/api/v1/plantings',
+      type: 'POST',
+      dataType: 'json',
+      data: queryData,
+      success: function(response) {
+        $('.square-foot.active').attr('class', 'square-foot active planted');
+        $('.square-foot.active.planted span').html('<img src="http://localhost:8080/dashboard/assets/billy.jpg">');
+        showPlantActionsPanel();
+      },
+      error: function(response) {
+        alert('There was a slight problem, Bobberino!');
+      }
+    });
   });
 
   function showPlantInfo(plantName) {
