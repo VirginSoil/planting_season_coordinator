@@ -1,11 +1,11 @@
 #bed-functions
   .bed-actions
     %ul.actions
-      %li.bed-info.action
+      %li{:class => "bed-info action active", :id => "info"}
         Bed Info
-      %li.bed-actions.action.active
+      %li{:class => "bed-actions action", :id => "actions"}
         Plant Actions
-      %li.bed-new-plant.action
+      %li{:class => "bed-new-plant action", :id => "new-plant"}
         New Plant
   .bed-content
     = render :partial => "beds/bed_information"

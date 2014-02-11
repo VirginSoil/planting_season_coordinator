@@ -61,9 +61,11 @@ $(function(){
   $('#actions').click(function(){
     showPlantActionsPanel();
   });
+
   $('#info').click(function(){
     showBedInfoPanel();
   });
+
   $('#new-plant').click(function(){
     showNewPlantPanel();
   });
@@ -117,35 +119,31 @@ $(function(){
 
 
   function showBedInfoPanel() {
-    $('.plant-actions').css("display", "none");
     $('.bed-information').css("display", "inline");
-    $('li#info a').css("background-color", "green");
-    $('li#actions a').css("background-color", "#bbb");
-    $('li#new-plant a').css("background-color", "#bbb");
+    $('.plant-actions').css("display", "none");
     $('.new-plant').css("display", "none");
+    $('.action.active').removeClass('active');
+    $('#info').addClass("active");
   }
 
   function showPlantActionsPanel() {
     $('.plant-actions').css("display", "inline");
     $('.bed-information').css("display", "none");
     $('.new-plant').css("display", "none");
-    $('li#actions a').css("background-color", "green");
-    $('li#info a').css("background-color", "#bbb");
-    $('li#new-plant a').css("background-color", "#bbb");
+    $('.action.active').removeClass('active');
+    $('#actions').addClass("active");
   }
 
   function showNewPlantPanel() {
+    $('.new-plant').css("display", "inline");
     $('.plant-actions').css("display", "none");
     $('.bed-information').css("display", "none");
-    $('.new-plant').css("display", "inline");
-    $('li#new-plant a').css("background-color", "green");
-    $('li#info a').css("background-color", "#bbb");
-    $('li#actions a').css("background-color", "#bbb");
+    $('.action.active').removeClass('active');
+    $('#new-plant').addClass("active");
   }
 
   function selectPlanted(element) {
     element.attr('class', 'square-foot active planted');
-    $(element.children()[0]).css('opacity', '0.8');
     showPlantActionsPanel();
     showPlantingDetails(element);
   }
@@ -176,7 +174,6 @@ $(function(){
       success: function(response) {
       },
       error: function(response) {
-        alert('There was a slight problem, Bobberino!');
       }
     });
   }
@@ -196,7 +193,6 @@ $(function(){
         var el = $('#planting-details');
         var slug = response['slug'];
         var content = "<p>Planting date: " + response['planting_date'] + "</p>" +
-          "<p>Harvested? " + response['harvested'] + "</p>" +
           $("#" + slug).html() + "<br />";
         el.html(content);
       },
@@ -220,9 +216,8 @@ $(function(){
       dataType: 'json',
       data: {planting: {x_coord: x, y_coord: y, bed_id: bedId}},
       success: function(response) {
-        var element = $('.square-foot.active.planted')
+        var element = $('.square-foot.active.planted');
         element.attr('class', 'square-foot');
-        element.css('background-color', 'white');
         element.html('');
         showBedInfoPanel();
       },
