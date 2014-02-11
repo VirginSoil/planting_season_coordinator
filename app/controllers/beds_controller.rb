@@ -6,12 +6,15 @@ class BedsController < ApplicationController
 
   def show
     make_sure_shes_got_a_bed
-    @bed = params[:bed] && params[:bed][:bed_id] ? show_bed : default_bed
-    i = current_users_beds.index(@bed)
-    if current_users_beds.length > 0
-      @next = current_users_beds[i + 1] if current_users_beds[i + 1]
-      @prev = current_users_beds[i - 1] if current_users_beds[i - 1]
+    if params[:bed] && params[:bed][:bed_id]
+      @bed = show_bed(params[:bed][:bed_id])
+    elsif params[:id]
+      @bed = show_bed(params[:id])
+    else
+      @bed = default_bed
     end
+    session[:current_bed] = @bed['id']
+    find_neighbors(@bed)
     @plant_names = all_plant_names
     @all_plants = all_the_plants
     @plantings = plantings_for_bed(@bed)
@@ -72,8 +75,8 @@ class BedsController < ApplicationController
     JSON.parse(response.body)
   end
 
-  def show_bed
-    response = Faraday.get("http://localhost:8080/api/v1/beds/#{params[:bed][:bed_id]}")
+  def show_bed(id)
+    response = Faraday.get("http://localhost:8080/api/v1/beds/#{id}")
     JSON.parse(response.body)
   end
 
@@ -94,6 +97,22 @@ class BedsController < ApplicationController
   def taken(bed)
     plantings_for_bed(bed).map do |planting|
       [planting["x_coord"].to_s, planting["y_coord"].to_s, planting["slug"].to_s]
+    end
+  end
+
+  def find_neighbors(bed)
+    if current_users_beds.length > 1
+      i = current_users_beds.index(bed)
+      if current_users_beds[i + 1]
+        @next = current_users_beds[i + 1]
+      else
+        @next = current_users_beds[0]
+      end
+      if current_users_beds[i-1]
+        @prev = current_users_beds[i - 1]
+      else
+        @prev = current_users_beds[-1]
+      end
     end
   end
 

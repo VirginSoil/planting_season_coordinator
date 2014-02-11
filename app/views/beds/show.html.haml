@@ -5,16 +5,16 @@
   .other-gardens.six.columns
     %ul{:class => "prev-next"}
       %li
-        %a{:class => "prev", :href => "#"}
+        %a{:class => "prev", :href => "http://localhost:8080/dashboard/beds/#{@prev['id']}"}
           Previous
       %li
-        %a{:class => "next", :href => "#"}
+        %a{:class => "next", :href => "http://localhost:8080/dashboard/beds/#{@next['id']}"}
           Next
     %ul{:class => "gardens"}
       %li
-        = @next['name']
-      %li
         = @prev['name']
+      %li
+        = @next['name']
 .content.row.full
 .main-content.eight.columns
   #bed-grid-panel
