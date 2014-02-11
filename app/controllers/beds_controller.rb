@@ -5,7 +5,6 @@ class BedsController < ApplicationController
   end
 
   def show
-    # raise params.inspect
     make_sure_shes_got_a_bed
     @bed = params[:bed] && params[:bed][:bed_id] ? show_bed : default_bed
     @width = @bed["width"]
