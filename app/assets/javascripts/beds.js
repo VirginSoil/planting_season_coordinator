@@ -64,12 +64,18 @@ $(function(){
     showNewPlantPanel();
   });
 
+  $('select').change(function() {
+    var plant = $(this).val();
+    showPlantInfo(plant);
+  });
+
   $('td').click(function(e){
     var element = $(e.currentTarget);
     var thisClass = $(this).attr("class");
     if ( thisClass == 'square-foot planted') {
       if ($('.active').length > 0) { return; }
       selectPlanted(element);
+      showPlantingDetails(element);
     } else if (thisClass == 'square-foot active planted') {
       deselectPlanted(element);
     } else if (thisClass == 'square-foot active') {
@@ -111,6 +117,7 @@ $(function(){
     element.attr('class', 'square-foot active planted');
     element.css('background-color', 'green');
     showPlantActionsPanel();
+    showPlantingDetails(element);
   }
 
   function deselectPlanted(element) {
@@ -140,6 +147,31 @@ $(function(){
       dataType: 'json',
       data: {bed: {notes: newNotes}},
       success: function(response) {
+      },
+      error: function(response) {
+        alert('There was a slight problem, Bobberino!');
+      }
+    });
+  }
+
+  function showPlantingDetails(element) {
+    var planting = $(element).attr('id');
+    var plantingCoords = parseId(planting);
+    var x = plantingCoords[0];
+    var y = plantingCoords[1];
+    var bedId = $('#bed-id').html().replace(/\s+/g, "");
+    $.ajax({
+      url: 'api/v1/plantings/by_coordinates/',
+      method: 'GET',
+      dataType: 'json',
+      data: {planting: {x_coord: x, y_coord: y, bed_id: bedId}},
+      success: function(response) {
+        var el = $('#planting-details');
+        var slug = response['slug'];
+        var content = "<p>Planting date: " + response['planting_date'] + "</p>" +
+          "<p>Harvested? " + response['harvested'] + "</p>" +
+          $("#" + slug).html() + "<br />";
+        el.html(content);
       },
       error: function(response) {
         alert('There was a slight problem, Bobberino!');
@@ -210,11 +242,6 @@ $(function(){
     });
   });
 
-  $('select').change(function() {
-    var plant = $(this).val();
-    showPlantInfo(plant);
-  });
-
   function showPlantInfo(plantName) {
     var slug = URLify(plantName);
     var plantInfo = $("#" + slug);
@@ -223,7 +250,6 @@ $(function(){
 
   function parseId(id) {
     return id.split("-").slice(1,3);
-    // return id.split("-").slice(1,3).map(function(e) {return parseInt(e);});
   }
 
 

@@ -6,7 +6,8 @@ class BedsController < ApplicationController
     @depth = @bed["depth"]
     @plant_names = all_plant_names
     @all_plants = all_the_plants
-    @taken_spots = plantings_for_bed(@bed)
+    @plantings = plantings_for_bed(@bed)
+    @taken_spots = taken(@bed)
   end
 
   def new
@@ -60,7 +61,11 @@ class BedsController < ApplicationController
   def plantings_for_bed(bed)
     response = Faraday.get("http://localhost:8080/api/v1/plantings/for_bed/#{bed['id']}")
     plantings = JSON.parse(response.body)
-    plantings.map do |planting|
+
+  end
+
+  def taken(bed)
+    plantings_for_bed(bed).map do |planting|
       [planting["x_coord"].to_s, planting["y_coord"].to_s]
     end
   end

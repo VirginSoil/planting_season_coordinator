@@ -13,11 +13,12 @@
       = render :partial => "./welcome/bed_functions"
       = render :partial => "./welcome/bed_content_tabs"
 
-  #taken-spots
-    = @taken_spots
 
   #bed-id
     = @bed["id"]
+
+  #taken-spots
+    = @taken_spots
 
   #all-plants
     - @all_plants.each do |plant|
