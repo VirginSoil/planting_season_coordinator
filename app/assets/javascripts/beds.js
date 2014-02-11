@@ -1,4 +1,5 @@
 $(function(){
+  window.isMouseDown = false;
   var spots = $("#taken-spots").html();
   var takenSpots = JSON.parse(spots);
 
@@ -69,7 +70,10 @@ $(function(){
     showPlantInfo(plant);
   });
 
-  $('td').click(function(e){
+  $('td').mousedown(function(e){
+    e.preventDefault();
+    window.isMouseDown = true;
+    // debugger;
     var element = $(e.currentTarget);
     var thisClass = $(this).attr("class");
     if ( thisClass == 'square-foot planted') {
@@ -82,7 +86,33 @@ $(function(){
     } else {
       selectUnplanted(element);
     }
+    return false;
   });
+
+   $('td').mouseover(function(e){
+    e.preventDefault();
+    if (window.isMouseDown){
+      var element = $(e.currentTarget);
+      var thisClass = $(this).attr("class");
+      if ( thisClass == 'square-foot planted') {
+        selectPlanted(element);
+        showPlantingDetails(element);
+      } else if (thisClass == 'square-foot active planted') {
+        deselectPlanted(element);
+      } else if (thisClass == 'square-foot active') {
+        deselectUnplanted(element);
+      } else {
+        selectUnplanted(element);
+      }
+    }
+  });
+
+  
+  $(document)
+    .mouseup(function () {
+      window.isMouseDown = false;
+    });
+
 
   function showBedInfoPanel() {
     $('.plant-actions').css("display", "none");
