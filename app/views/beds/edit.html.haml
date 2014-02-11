@@ -1,5 +1,5 @@
 .bed-info
-  = form_for @bed do |bed|
+  = form_for @bed, url: bed_path(@bed.id), method: :patch do |bed|
     = bed.label :name, "Bed Name"
     = bed.text_field :name
     = bed.label :zipcode, " Zipcode"
@@ -11,4 +11,4 @@
     = bed.label :depth, "Depth"
     = bed.text_field :depth
     = bed.hidden_field :user_id, value: @current_user_id
-    = bed.submit "Create Your Garden Now!"
+    = bed.submit "Edit Your Garden Details!"

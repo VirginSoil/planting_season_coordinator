@@ -9,7 +9,7 @@ $(function(){
       for (var j = 0; j < takenSpots.length; j++) {
         if (arraysIdentical(takenSpots[j], thisOne)) {
           $(allTheSquares[i]).attr("class", 'square-foot planted');
-          $(allTheSquares[i]).append('<img src="http://www.placekitten.com/50/50">');
+          $(allTheSquares[i]).append('taken');
         }
       }
     }
@@ -233,7 +233,7 @@ $(function(){
       data: queryData,
       success: function(response) {
         $('.square-foot.active').attr('class', 'square-foot active planted');
-        $('.square-foot.active.planted').html('<img src="http://www.placekitten.com/50/50">');
+        $('.square-foot.active.planted').html('taken');
         showPlantActionsPanel();
       },
       error: function(response) {

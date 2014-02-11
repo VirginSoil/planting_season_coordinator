@@ -15,6 +15,21 @@ class BedsController < ApplicationController
     @current_user_id = cookies[:user_id]
   end
 
+  def edit
+    response = Faraday.get("http://localhost:8080/api/v1/beds/#{(params[:id])}")
+    attrs = JSON.parse(response.body)
+    @bed = Bed.new(attrs)
+    @current_user_id = cookies[:user_id]
+  end
+
+  def update
+    response = Faraday.put("http://localhost:8080/api/v1/beds/#{(params[:id])}") do |req|
+      request = params
+      req.body = params
+    end
+    redirect_to beds_path, :notice => "Got er done!"
+  end
+
   def create
     response = Faraday.post('http://localhost:8080/api/v1/beds') do |req|
       request = params
@@ -61,7 +76,6 @@ class BedsController < ApplicationController
   def plantings_for_bed(bed)
     response = Faraday.get("http://localhost:8080/api/v1/plantings/for_bed/#{bed['id']}")
     plantings = JSON.parse(response.body)
-
   end
 
   def taken(bed)
