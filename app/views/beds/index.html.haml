@@ -8,10 +8,9 @@
               %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
     = render 'beds/bed_view_form'
 
-.side-content.four-columns
+.side-content.four.columns
   %div
-    = render :partial => "./welcome/bed_functions"
-    = render :partial => "./welcome/bed_content_tabs"
+    = render :partial => "beds/bed_functions"
 
   #bed-id
     = @bed["id"]
