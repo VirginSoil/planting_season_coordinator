@@ -12,4 +12,5 @@
  *= require foundation.min
  *= require styles
  *= require_tree .
+ *= require style
  */

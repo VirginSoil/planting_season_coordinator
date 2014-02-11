@@ -17,9 +17,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'vcr'
-end
-
-group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -31,7 +28,6 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'launchy'
-  
 end
 
 group :production do

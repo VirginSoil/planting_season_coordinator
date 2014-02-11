@@ -1,10 +1,24 @@
 .bed-information
-  %h4 Name:
-  = @bed['name']
-  %h4 Notes:
-  = @bed['notes']
+  %h3
+    = @bed['name']
+  =link_to "Edit Bed Details", edit_bed_path(@bed['id'])
+
+  %h5 Dimensions:
+  %p
+    Width:
+    = @bed['width']
+    %br
+    Depth:
+    = @bed['depth']
+  %h5 Zipcode:
+  %p
+    = @bed['zipcode']
+  %h5 Notes:
+  %p{:id => "loaded-notes"}
+    = @bed['notes']
+  %button{:id => "edit-notes-button"} Edit Notes
+  %textarea{:id => "bed-notes-form"}
+  %button{:id => "save-notes-button"} Save Notes
   %br
-  %br
-  %p <em>Bed Notfications are *off*.</em>
 
 

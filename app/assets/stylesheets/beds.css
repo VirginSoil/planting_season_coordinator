@@ -22,11 +22,7 @@ img {
   margin: 0;
 }
 
-#taken-spots {
-  display: none;
-}
-
-#all-plants {
+#taken-spots, #bed-id, #all-plants {
   display: none;
 }
 
@@ -36,4 +32,13 @@ li {
 
 table {
   border-collapse: collapse;
+}
+
+#bed-notes-form, #save-notes-button {
+  display: none;
+}
+
+#timeline {
+  clear: both;
+  padding-top: 1px;
 }
