@@ -196,6 +196,7 @@ $(function(){
       success: function(response) {
         var el = $('#planting-details');
         var slug = response['slug'];
+        debugger;
         var content = "<p>Planting date: " + response['planting_date'] + "</p>" +
           "<p>Harvested? " + response['harvested'] + "</p>" +
           $("#" + slug).html() + "<br />";
