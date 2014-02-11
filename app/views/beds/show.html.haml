@@ -1,10 +1,28 @@
+.garden-nav.row.full
+  .six.columns
+    %h1
+      =@bed['name']
+  .other-gardens.six.columns
+    %ul{:class => "prev-next"}
+      %li
+        %a{:class => "prev", :href => "#"}
+          Previous
+      %li
+        %a{:class => "next", :href => "#"}
+          Next
+    %ul{:class => "gardens"}
+      %li
+        = @next['name']
+      %li
+        = @prev['name']
+.content.row.full
 .main-content.eight.columns
   #bed-grid-panel
     %table{:id => "our_table"}
       %tbody
-        - @width.times do |i|
+        - @bed['width'].times do |i|
           %tr
-            - @depth.times do |j|
+            - @bed['depth'].times do |j|
               %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
                 %span
     = render 'beds/bed_view_form'

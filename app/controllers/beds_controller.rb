@@ -1,14 +1,17 @@
 class BedsController < ApplicationController
   def index
     @beds = current_users_beds
-    session[:default_bed] ||= valid_bed['id']
+    session[:default_bed] ||= default_bed['id']
   end
 
   def show
     make_sure_shes_got_a_bed
     @bed = params[:bed] && params[:bed][:bed_id] ? show_bed : default_bed
-    @width = @bed["width"]
-    @depth = @bed["depth"]
+    i = current_users_beds.index(@bed)
+    if current_users_beds.length > 0
+      @next = current_users_beds[i + 1] if current_users_beds[i + 1]
+      @prev = current_users_beds[i - 1] if current_users_beds[i - 1]
+    end
     @plant_names = all_plant_names
     @all_plants = all_the_plants
     @plantings = plantings_for_bed(@bed)

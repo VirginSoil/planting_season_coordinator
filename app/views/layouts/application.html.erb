@@ -20,33 +20,8 @@
     </div>
     <%= render partial: "layouts/navbar" %>
   </header>
-  <div class="garden-nav row full">
-    <div class="six columns">
-      <h1><%= @bed['name'] %></h1>
-    </div>
-    <div class="other-gardens six columns">
-      <ul class="prev-next">
-        <li><a class="prev" href="#">Previous</a></li>
-        <li><a class="next" href="#">Next</a></li>
-      </ul>
-      <ul class="gardens">
-        <li>Lettuce at Parent's House</li>
-        <li>Tomatoes at Home</li>
-      </ul>
-    </div>
-  </div>
-  <div class="garden-month row full">
-    <div class="twelve columns">
-      <a class="month-previous" href="#">Previous</a>
-      <span class="month-year">
-        December 2014
-      </span>
-      <a class="month-next" href="#">Next</a>
-    </div>
-  </div>
-  <div class="content row full">
-    <%= yield %>
-  </div>
+
+  <%= yield %>
 
 </body>
 </html>
