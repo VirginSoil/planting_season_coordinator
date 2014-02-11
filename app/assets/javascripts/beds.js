@@ -49,6 +49,11 @@ $(function(){
     updateNotes(newNotes);
   });
 
+  $('#delete-planting-button').click(function(e){
+    e.preventDefault();
+    deletePlanting();
+  });
+
   $('#actions').click(function(){
     showPlantActionsPanel();
   });
@@ -140,6 +145,85 @@ $(function(){
         alert('There was a slight problem, Bobberino!');
       }
     });
+  }
+
+  function deletePlanting() {
+    confirm("Are you sure?");
+    var planting = $('.square-foot.active.planted').attr('id');
+    var plantingCoords = parseId(planting);
+    var x = plantingCoords[0];
+    var y = plantingCoords[1];
+    var bedId = $('#bed-id').html().replace(/\s+/g, "");
+
+    $.ajax({
+      url: 'api/v1/plantings/',
+      method: 'DELETE',
+      dataType: 'json',
+      data: {planting: {x_coord: x, y_coord: y, bed_id: bedId}},
+      success: function(response) {
+        var element = $('.square-foot.active.planted')
+        element.attr('class', 'square-foot');
+        element.css('background-color', 'white');
+        element.html('');
+        showBedInfoPanel();
+      },
+      error: function(response) {
+        alert('There was a slight problem, Bobberino!');
+      }
+    });
+  }
+
+  $('#add-to-garden').on("click", function(e) {
+    var thisSquare, thisSquareId, x, y, plant, bed_id, queryData;
+
+    e.preventDefault();
+    thisSquare = $('.square-foot.active')[0];
+    if (thisSquare === undefined) {alert("Please select a square!")}
+    thisSquareId = $(thisSquare).attr('id');
+    x = parseId(thisSquareId)[0];
+    y = parseId(thisSquareId)[1];
+    plant = $('#planting_plants').val();
+    bed_id = $('#bed-id').html().replace(/(\s+$|^\s+)/, "");
+
+    queryData = {
+      planting: {
+        x_coord: x,
+        y_coord: y,
+        plant_id: plant,
+        bed_id: bed_id,
+      }
+    };
+
+    $.ajax({
+      url: '/api/v1/plantings',
+      type: 'POST',
+      dataType: 'json',
+      data: queryData,
+      success: function(response) {
+        $('.square-foot.active').attr('class', 'square-foot active planted');
+        $('.square-foot.active.planted').html('<img src="http://www.placekitten.com/50/50">');
+        showPlantActionsPanel();
+      },
+      error: function(response) {
+        alert('There was a slight problem, Bobberino!');
+      }
+    });
+  });
+
+  $('select').change(function() {
+    var plant = $(this).val();
+    showPlantInfo(plant);
+  });
+
+  function showPlantInfo(plantName) {
+    var slug = URLify(plantName);
+    var plantInfo = $("#" + slug);
+    $('#plant-info').html(plantInfo);
+  }
+
+  function parseId(id) {
+    return id.split("-").slice(1,3);
+    // return id.split("-").slice(1,3).map(function(e) {return parseInt(e);});
   }
 
 
