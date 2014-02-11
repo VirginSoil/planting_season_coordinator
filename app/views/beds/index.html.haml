@@ -6,13 +6,42 @@
         %tbody
           - @width.times do |i|
             %tr
+
               - @depth.times do |j|
                 %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
+      #timeline
+        .month-picker
+          %a{:href => "index.html", :class => "month-picker-nav", :title => "Not implemented"}
+          %fieldset{:class => "month-picker-fieldset"}
+            %input{:type => "radio", :name => "month", :value => "jan", :id => "jan"}
+            %label{:for => "jan", :class => "month-picker-label"} Jan
+            %input{:type => "radio", :name => "month", :value => "feb", :id => "feb"}
+            %label{:for => "feb", :class => "month-picker-label"} Feb
+            %input{:type => "radio", :name => "month", :value => "mar", :id => "mar"}
+            %label{:for => "mar", :class => "month-picker-label"} Mar
+            %input{:type => "radio", :name => "month", :value => "apr", :id => "apr"}
+            %label{:for => "apr", :class => "month-picker-label"} Apr
+            %input{:type => "radio", :name => "month", :value => "may", :id => "may"}
+            %label{:for => "may", :class => "month-picker-label"} May
+            %input{:type => "radio", :name => "month", :value => "jun", :id => "jun"}
+            %label{:for => "jun", :class => "month-picker-label"} Jun
+            %input{:type => "radio", :name => "month", :value => "jul", :id => "jul"}
+            %label{:for => "jul", :class => "month-picker-label"} Jul
+            %input{:type => "radio", :name => "month", :value => "aug", :id => "aug"}
+            %label{:for => "aug", :class => "month-picker-label"} Aug
+            %input{:type => "radio", :name => "month", :value => "sep", :id => "sep"}
+            %label{:for => "sep", :class => "month-picker-label"} Sep
+            %input{:type => "radio", :name => "month", :value => "oct", :id => "oct"}
+            %label{:for => "oct", :class => "month-picker-label"} Oct
+            %input{:type => "radio", :name => "month", :value => "nov", :id => "nov"}
+            %label{:for => "nov", :class => "month-picker-label"} Nov
+            %input{:type => "radio", :name => "month", :value => "dec", :id => "dec"}
+            %label{:for => "dec", :class => "month-picker-label"} Dec
+          %a{:href => "index.html", :class => "month-picker-nav", :title => "Not implemented"}
 
     #bed-function-panel
       = render :partial => "./welcome/bed_functions"
       = render :partial => "./welcome/bed_content_tabs"
-
 
   #bed-id
     = @bed["id"]

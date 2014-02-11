@@ -37,3 +37,8 @@ table {
 #bed-notes-form, #save-notes-button {
   display: none;
 }
+
+#timeline {
+  clear: both;
+  padding-top: 1px;
+}
