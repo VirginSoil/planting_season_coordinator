@@ -1,7 +1,7 @@
 class BedsController < ApplicationController
   def index
-    @beds = current_users_beds
-    session[:default_bed] ||= default_bed['id']
+    @beds = MiracleGrow::Bed.current_users_beds(cookies[:user_id])
+    session[:default_bed] ||= MiracleGrow::Bed.default_bed(cookies[:user_id])['id']
   end
 
   def show
