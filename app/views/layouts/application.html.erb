@@ -3,7 +3,6 @@
 <head>
   <title>Planting Season - Your Garden</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,7 +22,17 @@
 
   <%= yield %>
 
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "urlify" %>
+  <%= javascript_include_tag "utilities" %>
+  <%= javascript_include_tag "welcome" %>
+  <%= javascript_include_tag "api_calls" %>
+  <%= javascript_include_tag "views" %>
+  <%= javascript_include_tag "load_plantings" %>
+  <%= javascript_include_tag "routes" %>
+  <%= javascript_include_tag "dragging" %>
 </body>
+
 </html>
 
 
