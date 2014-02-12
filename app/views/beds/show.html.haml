@@ -5,11 +5,9 @@
   .other-gardens.six.columns
     %ul{:class => "prev-next"}
       %li
-        %a{:class => "prev", :href => "http://localhost:8080/dashboard/beds/#{@prev['id']}"}
-          Previous
+        = link_to "Previous", bed_path(@prev['id']), class: "prev"
       %li
-        %a{:class => "next", :href => "http://localhost:8080/dashboard/beds/#{@next['id']}"}
-          Next
+        = link_to "Next", bed_path(@next['id']), class: "next"
     %ul{:class => "gardens"}
       %li
         = @prev['name']

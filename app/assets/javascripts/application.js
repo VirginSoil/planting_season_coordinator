@@ -12,6 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require urlify
-//= require welcome
-//= require beds
+
+var hostName = $('#host-name').html().replace(/\s+/g, "");

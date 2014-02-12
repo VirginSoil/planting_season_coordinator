@@ -19,10 +19,4 @@ class Bed
     @user_id = data["user_id"]
   end
 
-  def self.client
-    Faraday.new(:url => "http://localhost:8080")
-  end
-
-
-
 end
