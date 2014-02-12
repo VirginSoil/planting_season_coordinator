@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'haml'
 gem 'faraday'
-gem 'miracle_grow', '0.2.0'
+gem 'miracle_grow', '0.2.1'
 gem 'geocoder'
 
 group :development, :test do

@@ -1,6 +1,6 @@
 function updateNotes(newNotes) {
   var bedId = $('#bed-id').html().replace(/\s+/g, "");
-  var url = '/api/v1/beds/' + bedId;
+  var url = hostName + '/api/v1/beds/' + bedId;
   $.ajax({
     url: 'api/v1/beds/' + bedId,
     method: 'PATCH',
@@ -20,7 +20,7 @@ function showPlantingDetails(element) {
   var y = plantingCoords[1];
   var bedId = $('#bed-id').html().replace(/\s+/g, "");
   $.ajax({
-    url: 'api/v1/plantings/by_coordinates/',
+    url: hostName + '/api/v1/plantings/by_coordinates/',
     method: 'GET',
     dataType: 'json',
     data: {planting: {x_coord: x, y_coord: y, bed_id: bedId}},
@@ -37,6 +37,34 @@ function showPlantingDetails(element) {
   });
 }
 
+function harvestPlanting() {
+  var planting = $('.square-foot.active.planted').attr('id');
+  var plantingCoords = parseId(planting);
+  var x = plantingCoords[0];
+  var y = plantingCoords[1];
+  var bedId = $('#bed-id').html().replace(/\s+/g, "");
+
+  $.ajax({
+    url: hostName + '/api/v1/plantings/by_coordinates/',
+    method: 'PUT',
+    dataType: 'json',
+    data: {planting: {x_coord: x, y_coord: y, bed_id: bedId}},
+    success: function(response) {
+      var slug = response["slug"];
+      var element = $('.square-foot.active.planted');
+      element.toggleClass('harvested');
+      if (response.harvested === true) {
+        element.children('span').html('<img src="' + hostName + '/dashboard/assets/goodveg/' + slug + '-harvested.jpg">');
+      } else {
+        element.children('span').html('<img src="' + hostName + '/dashboard/assets/goodveg/' + slug + '.jpg">');
+      }
+    },
+    error: function(response) {
+      console.log('Error harvesting plant');
+    }
+  });
+}
+
 function deletePlanting() {
   confirm("Are you sure?");
   var planting = $('.square-foot.active.planted').attr('id');
@@ -46,7 +74,7 @@ function deletePlanting() {
   var bedId = $('#bed-id').html().replace(/\s+/g, "");
 
   $.ajax({
-    url: 'api/v1/plantings/',
+    url: hostName + '/api/v1/plantings/',
     method: 'DELETE',
     dataType: 'json',
     data: {planting: {x_coord: x, y_coord: y, bed_id: bedId}},
@@ -88,7 +116,7 @@ function addToGarden() {
     };
 
     $.ajax({
-      url: '/api/v1/plantings',
+      url: hostName + '/api/v1/plantings',
       type: 'POST',
       dataType: 'json',
       data: queryData,
