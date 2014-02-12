@@ -1,6 +1,6 @@
 function updateNotes(newNotes) {
   var bedId = $('#bed-id').html().replace(/\s+/g, "");
-  var url = 'http://localhost:8080/api/v1/beds/' + bedId;
+  var url = '/api/v1/beds/' + bedId;
   $.ajax({
     url: 'api/v1/beds/' + bedId,
     method: 'PATCH',
@@ -32,7 +32,7 @@ function showPlantingDetails(element) {
       el.html(content);
     },
     error: function(response) {
-      alert('There was a slight problem, Bobberino!');
+      console.log('Error loading planting info');
     }
   });
 }
@@ -57,7 +57,7 @@ function deletePlanting() {
       showBedInfoPanel();
     },
     error: function(response) {
-      alert('There was a slight problem, Bobberino!');
+      console.log('Error loading planting info');
     }
   });
 }
@@ -94,7 +94,7 @@ function addToGarden() {
       data: queryData,
       success: function(response) {
         var slug = response["slug"];
-        $('.square-foot.active.empty span').html('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+        $('.square-foot.active.empty span').html('<img src="' + hostName + '/dashboard/assets/goodveg/' + slug + '.jpg">');
         $('.square-foot.active').removeClass('active').removeClass('empty').addClass('planted');
         showBedInfoPanel();
       },

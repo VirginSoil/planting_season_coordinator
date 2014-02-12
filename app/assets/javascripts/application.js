@@ -12,3 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+var hostName = $('#host-name').html().replace(/\s+/g, "");

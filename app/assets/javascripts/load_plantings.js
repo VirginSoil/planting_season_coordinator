@@ -15,7 +15,7 @@ $(function(){
           if (arraysIdentical(takenCoords, thisOne)) {
             $(allTheSquares[i]).attr("class", 'square-foot planted');
             var span = $(allTheSquares[i]).children('span');
-            $(span).append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+            $(span).append('<img src="' + hostName + '/dashboard/assets/goodveg/' + slug + '.jpg">');
           }
         }
       }

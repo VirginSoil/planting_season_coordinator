@@ -5,7 +5,6 @@ class BedsController < ApplicationController
   end
 
   def show
-    # raise env["SERVER_NAME"]
     make_sure_shes_got_a_bed
     decide_which_bed_to_use
     session[:current_bed] = @bed['id']
@@ -55,9 +54,9 @@ class BedsController < ApplicationController
 
   def decide_which_bed_to_use
     if params[:bed] && params[:bed][:bed_id]
-      @bed = show_bed(params[:bed][:bed_id])
+      @bed = MiracleGrow::Bed.show_bed(params[:bed][:bed_id])
     elsif params[:id]
-      @bed = show_bed(params[:id])
+      @bed = MiracleGrow::Bed.show_bed(params[:id])
     else
       @bed = MiracleGrow::Bed.default_bed(cookies[:user_id])
     end
