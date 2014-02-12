@@ -34,6 +34,7 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'launchy'
+  gem 'vcr'
 end
 
 group :production do
