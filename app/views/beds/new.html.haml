@@ -1,16 +1,21 @@
 .bed-info
-  = form_for @bed do |bed|
-    = bed.label :name, "Bed Name"
-    = bed.text_field :name
-    = bed.label :zipcode, " Zipcode"
-    = bed.text_field :zipcode
-    = bed.label :notes, "Notes"
-    = bed.text_area :notes
-    = bed.label :width, "Width"
-    = bed.text_field :width
-    = bed.label :depth, "Depth"
-    = bed.text_field :depth
-    = bed.hidden_field :user_id, value: @current_user_id
-    = bed.submit "Create Your Garden Now!"
+  .new-bed
+    = form_for @bed do |bed|
+      = bed.label :name, "Bed Name"
+      = bed.text_field :name
+      = bed.label :zipcode, " Zipcode"
+      = bed.text_field :zipcode
+      = bed.label :notes, "Notes"
+      = bed.text_area :notes
+      = bed.label :width, "Width"
+      = bed.text_field :width
+      = bed.label :depth, "Depth"
+      = bed.text_field :depth
+      = bed.hidden_field :user_id, value: @current_user_id
+      = bed.submit "Create Your Garden Now!"
 %hr
-%iframe{:src => "http://www.plantmaps.com/hardiness-zone-zipcode.php", :name => "Find the USDA Hardiness Zone for your Zipocde and Map it", :width => "210", :scrolling => "No", :frameborder => "0", :marginheight => "0", :marginwidth => "0"}
+
+.bed-info
+  %h3
+    Curious about your Zone? Check it out Here!
+  %iframe{:src => "http://www.plantmaps.com/hardiness-zone-zipcode.php", :name => "Find the USDA Hardiness Zone for your Zipocde and Map it", :width => "210", :scrolling => "No", :frameborder => "0", :marginheight => "0", :marginwidth => "0"}
