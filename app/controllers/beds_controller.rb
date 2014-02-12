@@ -14,7 +14,6 @@ class BedsController < ApplicationController
     @all_plants = MiracleGrow::Plant.all_the_plants
     @plantings = MiracleGrow::Planting.plantings_for_bed(@bed['id'])
     @taken_spots = MiracleGrow::Planting.taken(@bed['id'])
-
   end
 
   def new

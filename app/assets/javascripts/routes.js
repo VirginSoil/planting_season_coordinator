@@ -17,6 +17,11 @@ $(function() {
     showPlantInfo(plant);
   });
 
+  $('#harvest-button').click(function(e){
+    e.preventDefault();
+    harvestPlanting();
+  });
+
   $('#delete-planting-button').click(function(e){
     e.preventDefault();
     deletePlanting();
