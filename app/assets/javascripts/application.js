@@ -15,3 +15,4 @@
 //= require urlify
 //= require welcome
 //= require beds
+//= require weather

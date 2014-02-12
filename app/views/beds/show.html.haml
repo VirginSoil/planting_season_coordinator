@@ -36,4 +36,5 @@
           ="Days to Germination: #{plant['days_to_germination']}"
         %li
           ="Planting Depth: #{plant['depth']}\""
-  = render 'beds/weather'
+  - if @weather          
+    = render 'beds/weather'

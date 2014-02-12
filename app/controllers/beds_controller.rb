@@ -13,6 +13,7 @@ class BedsController < ApplicationController
     @all_plants = all_the_plants
     @plantings = plantings_for_bed(@bed)
     @taken_spots = taken(@bed)
+    get_weather       
   end
 
   def new
@@ -93,5 +94,13 @@ class BedsController < ApplicationController
       [planting["x_coord"].to_s, planting["y_coord"].to_s, planting["slug"].to_s]
     end
   end
-
+  def get_weather
+    result = Geocoder.search(@bed["zipcode"])
+    unless result.empty?
+      location = result.first.data["geometry"]["location"]
+      lat = location["lat"]
+      lng = location["lng"]
+      @weather = WeatherService.today(lat, lng)
+    end
+  end
 end
