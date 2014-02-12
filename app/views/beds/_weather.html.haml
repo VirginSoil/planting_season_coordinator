@@ -1,0 +1,24 @@
+.weather-panel
+  %h1 Today's Weather
+  %ul
+    %li
+      Zipcode: 
+      = @bed["zipcode"]
+    %li
+      Conditions: 
+      = @weather[:summary]
+    %li
+      Today's High:  
+      = @weather[:high_temp].to_s + " °F"
+    %li
+      Overnight Low: 
+      = @weather[:low_temp].to_s + " °F"
+    %li
+      Chance of rain: 
+      = number_to_percentage(@weather[:chance_of_rain] * 100, precision: 0)
+    %li
+      Dew Point: 
+      = @weather[:dew_point].to_s + " °F"
+    %li
+      Humidity: 
+      = number_to_percentage(@weather[:humidity] * 100, precision: 0)

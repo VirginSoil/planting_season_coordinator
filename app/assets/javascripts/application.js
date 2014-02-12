@@ -19,7 +19,8 @@
 //= require api_calls
 //= require views
 //= require load_plantings
-//= require routes 
-//= require dragging 
+//= require routes
+//= require dragging
+//= require weather
 
 var hostName = $('#host-name').html().replace(/\s+/g, "");

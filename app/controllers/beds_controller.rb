@@ -1,18 +1,20 @@
 class BedsController < ApplicationController
   def index
-    @beds = current_users_beds
-    session[:default_bed] ||= default_bed['id']
+    @beds = MiracleGrow::Bed.current_users_beds(cookies[:user_id])
+    session[:default_bed] ||= MiracleGrow::Bed.default_bed(cookies[:user_id])['id']
   end
 
   def show
     make_sure_shes_got_a_bed
     decide_which_bed_to_use
     session[:current_bed] = @bed['id']
+    get_weather
     @next, @prev = MiracleGrow::Bed.find_neighbors(@bed, cookies[:user_id])
     @plant_names = MiracleGrow::Plant.all_plant_names
     @all_plants = MiracleGrow::Plant.all_the_plants
     @plantings = MiracleGrow::Planting.plantings_for_bed(@bed['id'])
     @taken_spots = MiracleGrow::Planting.taken(@bed['id'])
+
   end
 
   def new
@@ -59,6 +61,16 @@ class BedsController < ApplicationController
       @bed = MiracleGrow::Bed.show_bed(params[:id])
     else
       @bed = MiracleGrow::Bed.default_bed(cookies[:user_id])
+    end
+  end
+
+  def get_weather
+    result = Geocoder.search(@bed["zipcode"])
+    unless result.empty?
+      location = result.first.data["geometry"]["location"]
+      lat = location["lat"]
+      lng = location["lng"]
+      @weather = WeatherService.today(lat, lng)
     end
   end
 

@@ -1,0 +1,4 @@
+---
+verbinski: |+
+  data: {"current":{"temperature":54,"summary":"Partly Cloudy","humidity":"82\u0026#37;","wind_speed":6,"wind_bearing":260,"icon":"partly-cloudy-day"},"today":{"summary":"Foggy starting tonight, continuing until tomorrow morning.","high":54,"low":50,"sunrise":"8:05 am","sunset":"6:45 pm","icon":"fog"},"upcoming_week":[{"max_temp":59,"min_temp":48,"time":"Wed","icon":"fog"},{"max_temp":61,"min_temp":54,"time":"Thu","icon":"fog"},{"max_temp":58,"min_temp":54,"time":"Fri","icon":"partly-cloudy-day"},{"max_temp":60,"min_temp":57,"time":"Sat","icon":"rain"},{"max_temp":63,"min_temp":52,"time":"Sun","icon":"rain"},{"max_temp":61,"min_temp":49,"time":"Mon","icon":"partly-cloudy-day"},{"max_temp":57,"min_temp":51,"time":"Tue","icon":"rain"}],"id":"verbinski","updatedAt":1392163348}
+

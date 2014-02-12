@@ -40,6 +40,18 @@ table {
 #bed-notes-form, #save-notes-button {
   display: none;
 }
+.weather-panel {
+  position: absolute;
+  left: 18%;
+  top: -29%;
+  background-color: white;
+  border: 1px solid #eee;
+  display: none;
+}
+
+.weather-panel.showing {
+  display: inline;
+}
 
 .bed-display-panel {
   display: inline-block;

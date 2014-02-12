@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= JSON.parse(response)
   end
 
+  def weather
+    WeatherService.response.body
+  end
+
 end
