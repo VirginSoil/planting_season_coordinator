@@ -8,7 +8,7 @@ $(function(){
     for (var i = 0; i < allTheSquares.length; i++) {
       var thisOne = parseId($(allTheSquares[i]).attr('id'));
       for (var j = 0; j < takenSpots.length; j++) {
-        var takenCoords = [takenSpots[j][0], takenSpots[j][1]]
+        var takenCoords = [takenSpots[j][0], takenSpots[j][1]];
         var slug = takenSpots[j][2];
         if (arraysIdentical(takenCoords, thisOne)) {
           $(allTheSquares[i]).attr("class", 'square-foot planted');
@@ -80,16 +80,7 @@ $(function(){
     window.isMouseDown = true;
     var element = $(e.currentTarget);
     var thisClass = $(this).attr("class");
-    if ( thisClass == 'square-foot planted') {
-      selectPlanted(element);
-      showPlantingDetails(element);
-    } else if (thisClass == 'square-foot active planted') {
-      deselectPlanted(element);
-    } else if (thisClass == 'square-foot active') {
-      deselectUnplanted(element);
-    } else {
-      selectUnplanted(element);
-    }
+    toggleSquare(thisClass, element);
     return false;
   });
 
@@ -98,25 +89,29 @@ $(function(){
     if (window.isMouseDown){
       var element = $(e.currentTarget);
       var thisClass = $(this).attr("class");
-      if ( thisClass == 'square-foot planted') {
-        selectPlanted(element);
-        showPlantingDetails(element);
-      } else if (thisClass == 'square-foot active planted') {
-        deselectPlanted(element);
-      } else if (thisClass == 'square-foot active') {
-        deselectUnplanted(element);
-      } else {
-        selectUnplanted(element);
-      }
+      toggleSquare(thisClass, element);
     }
+    return false;
   });
+
+  function toggleSquare(thisClass, element) {
+    if ( thisClass == 'square-foot planted') {
+      selectPlanted(element);
+      showPlantingDetails(element);
+    } else if (thisClass == 'square-foot active planted') {
+      deselectPlanted(element);
+    } else if (thisClass == 'square-foot active empty') {
+      deselectUnplanted(element);
+    } else {
+      selectUnplanted(element);
+    }
+  }
 
 
   $(document)
     .mouseup(function () {
       window.isMouseDown = false;
     });
-
 
   function showBedInfoPanel() {
     $('.bed-information').css("display", "inline");
@@ -154,12 +149,12 @@ $(function(){
   }
 
   function selectUnplanted(element) {
-    element.attr('class', 'square-foot active');
+    element.attr('class', 'square-foot active empty');
     showNewPlantPanel();
   }
 
   function deselectUnplanted(element) {
-    element.attr('class', 'square-foot');
+    element.attr('class', 'square-foot empty');
     showBedInfoPanel();
   }
 
@@ -217,7 +212,7 @@ $(function(){
       data: {planting: {x_coord: x, y_coord: y, bed_id: bedId}},
       success: function(response) {
         var element = $('.square-foot.active.planted');
-        element.attr('class', 'square-foot');
+        element.attr('class', 'square-foot empty');
         element.children('span').html('');
         showBedInfoPanel();
       },
@@ -262,8 +257,8 @@ $(function(){
         data: queryData,
         success: function(response) {
           var slug = response["slug"];
-          $('.square-foot.active span').append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
-          $('.square-foot.active').removeClass('active').addClass('planted');
+          $('.square-foot.active.empty span').html('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+          $('.square-foot.active').removeClass('active').removeClass('empty').addClass('planted');
           showBedInfoPanel();
         },
         error: function(response) {

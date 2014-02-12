@@ -24,7 +24,7 @@
         - @bed['width'].times do |i|
           %tr
             - @bed['depth'].times do |j|
-              %td{:class => "square-foot", :id => "bed-#{i}-#{j}"}
+              %td{:class => "square-foot empty", :id => "bed-#{i}-#{j}"}
                 %span
     = render 'beds/bed_view_form'
 
