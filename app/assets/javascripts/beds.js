@@ -76,7 +76,6 @@ $(function(){
   });
 
   $('td').mousedown(function(e){
-    e.preventDefault();
     window.isMouseDown = true;
     var element = $(e.currentTarget);
     var thisClass = $(this).attr("class");
@@ -84,14 +83,18 @@ $(function(){
     return false;
   });
 
-   $('td').mouseover(function(e){
-    e.preventDefault();
+   $('td').mouseenter(function(e){
     if (window.isMouseDown){
       var element = $(e.currentTarget);
       var thisClass = $(this).attr("class");
       toggleSquare(thisClass, element);
     }
     return false;
+  });
+
+  $(document)
+    .mouseup(function () {
+    window.isMouseDown = false;
   });
 
   function toggleSquare(thisClass, element) {
@@ -106,12 +109,6 @@ $(function(){
       selectUnplanted(element);
     }
   }
-
-
-  $(document)
-    .mouseup(function () {
-      window.isMouseDown = false;
-    });
 
   function showBedInfoPanel() {
     $('.bed-information').css("display", "inline");
