@@ -9,4 +9,18 @@ class ApplicationController < ActionController::Base
     @current_user ||= JSON.parse(response)
   end
 
+  def host
+    Rails.env.production? ? prod_url : dev_url
+  end
+
+  private
+
+  def prod_url
+    "http://107.170.7.85"
+  end
+
+  def dev_url
+    "http://localhost:8080"
+  end
+
 end

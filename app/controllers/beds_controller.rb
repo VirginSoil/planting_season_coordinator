@@ -27,14 +27,14 @@ class BedsController < ApplicationController
   end
 
   def edit
-    response = Faraday.get("http://localhost:8080/api/v1/beds/#{(params[:id])}")
+    response = Faraday.get("#{host}/api/v1/beds/#{(params[:id])}")
     attrs = JSON.parse(response.body)
     @bed = Bed.new(attrs)
     @current_user_id = cookies[:user_id]
   end
 
   def update
-    response = Faraday.put("http://localhost:8080/api/v1/beds/#{(params[:id])}") do |req|
+    response = Faraday.put("#{host}/api/v1/beds/#{(params[:id])}") do |req|
       request = params
       req.body = params
     end
@@ -42,7 +42,7 @@ class BedsController < ApplicationController
   end
 
   def create
-    response = Faraday.post('http://localhost:8080/api/v1/beds') do |req|
+    response = Faraday.post('#{host}/api/v1/beds') do |req|
       request = params
       req.body = params
     end
@@ -66,22 +66,22 @@ class BedsController < ApplicationController
   end
 
   def current_users_beds
-    response = Faraday.get("http://localhost:8080/api/v1/beds/for_user/#{cookies[:user_id]}")
+    response = Faraday.get("#{host}/api/v1/beds/for_user/#{cookies[:user_id]}")
     JSON.parse(response.body)
   end
 
   def default_bed
-    response = Faraday.get("http://localhost:8080/api/v1/beds/default_for_user/#{cookies[:user_id]}")
+    response = Faraday.get("#{host}/api/v1/beds/default_for_user/#{cookies[:user_id]}")
     JSON.parse(response.body)
   end
 
   def show_bed(id)
-    response = Faraday.get("http://localhost:8080/api/v1/beds/#{id}")
+    response = Faraday.get("#{host}/api/v1/beds/#{id}")
     JSON.parse(response.body)
   end
 
   def all_the_plants
-    response = Faraday.get("http://localhost:8080/api/v1/plants")
+    response = Faraday.get("#{host}/api/v1/plants")
     JSON.parse(response.body)
   end
 
@@ -90,7 +90,7 @@ class BedsController < ApplicationController
   end
 
   def plantings_for_bed(bed)
-    response = Faraday.get("http://localhost:8080/api/v1/plantings/for_bed/#{bed['id']}")
+    response = Faraday.get("#{host}/api/v1/plantings/for_bed/#{bed['id']}")
     plantings = JSON.parse(response.body)
   end
 

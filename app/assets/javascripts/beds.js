@@ -2,6 +2,7 @@ $(function(){
   window.isMouseDown = false;
   var spots = $("#taken-spots").html();
   var takenSpots = JSON.parse(spots);
+  var host = window.location.protocol + '//' + window.location.host;
 
   if (takenSpots.length > 0) {
     var allTheSquares = $('.square-foot');
@@ -13,15 +14,15 @@ $(function(){
         if (arraysIdentical(takenCoords, thisOne)) {
           $(allTheSquares[i]).attr("class", 'square-foot planted');
           var span = $(allTheSquares[i]).children('span');
-          $(span).append('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+          $(span).append('<img src="' + host + '/dashboard/assets/goodveg/' + slug + '.jpg">');
         }
       }
     }
-  };
+  }
 
   function parseId(id) {
     return id.split("-").slice(1,3);
-  };
+  }
 
   function arraysIdentical(a, b) {
     var i = a.length;
@@ -30,7 +31,7 @@ $(function(){
         if (a[i] !== b[i]) return false;
     }
     return true;
-  };
+  }
 
   $('#edit-notes-button').click(function(e){
     e.preventDefault();
@@ -157,7 +158,7 @@ $(function(){
 
   function updateNotes(newNotes) {
     var bedId = $('#bed-id').html().replace(/\s+/g, "");
-    var url = 'http://localhost:8080/api/v1/beds/' + bedId;
+    var url = host + '/api/v1/beds/' + bedId;
     $.ajax({
       url: 'api/v1/beds/' + bedId,
       method: 'PATCH',
@@ -254,7 +255,7 @@ $(function(){
         data: queryData,
         success: function(response) {
           var slug = response["slug"];
-          $('.square-foot.active.empty span').html('<img src="http://localhost:8080/dashboard/assets/goodveg/' + slug + '.jpg">');
+          $('.square-foot.active.empty span').html('<img src="' + host + '/dashboard/assets/goodveg/' + slug + '.jpg">');
           $('.square-foot.active').removeClass('active').removeClass('empty').addClass('planted');
           showBedInfoPanel();
         },
