@@ -1,9 +1,10 @@
-%h2 Checkin' yo' bedzz
+%h2.page-title Checkin' yo' bedzz
 %hr
--@beds.each do |bed|
-  .bed-display-panel
-    =form_for Bed.new, url: { action: "show" }, method: :get do |f|
-      =f.hidden_field :bed_id, value: bed['id']
-      %h4
-        =bed['name']
-      %input{:type => "image", :src => "/dashboard/assets/billy.jpg", :width => "300px", :height => "300px", :alt => "Submit Form"}
+.beds.row.full
+  -@beds.each do |bed|
+    .bed-display-panel
+      =form_for Bed.new, url: { action: "show" }, method: :get do |f|
+        =f.hidden_field :bed_id, value: bed['id']
+        %h4
+          =bed['name']
+        %input{:type => "image", :src => "/dashboard/assets/billy.jpg", :width => "300px", :height => "300px", :alt => "Submit Form"}

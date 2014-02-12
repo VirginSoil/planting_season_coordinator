@@ -3,15 +3,16 @@
     %li
       %a.my-gardens{href: "/dashboard/beds"}
         My Gardens
-    %li
-      %a.notifications{href: "#"}
-        Notifications
+    - if @bed.kind_of?(Hash)
+      %li
+        %a.notifications{href: "#"}
+          Notifications
     %li.user.parent
       %span Tyler Long
       %ul.children
+        /%li.child
+        /  %a{href: "#"}
+        /    Settings
         %li.child
-          %a{href: "#"}
-            Settings
-        %li.child
-          %a{href: "#"}
+          %a{href: "/dashboard/logout"}
             Logout
