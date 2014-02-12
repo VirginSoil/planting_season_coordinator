@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "Bed-info" do 
 
   scenario "on new bed page" do 
-    visit "/beds/new"
+    visit "bed_show_path"
     within ".bed-info" do 
       fill_in "Bed Name", with: "Billy BBQ Tomato Sauce"
       fill_in "Zipcode", with: "80210"

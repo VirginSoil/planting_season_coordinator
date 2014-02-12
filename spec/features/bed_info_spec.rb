@@ -16,7 +16,7 @@ describe "Bed Information Panel", :js => true do
     end
   end
 
-  it "sees the row, column, and plant selects and the submit button" do
+  xit "sees the row, column, and plant selects and the submit button" do
     visit root_path
     within '#bed-view-panel' do
       select "A", from: "planting[row]"

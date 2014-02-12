@@ -46,6 +46,12 @@ class BedsController < ApplicationController
     end
   end
 
+  def log_out
+    cookie.delete(:user_id)
+    redirect_to "/"
+  end
+
+
   private
 
   def make_sure_shes_got_a_bed
