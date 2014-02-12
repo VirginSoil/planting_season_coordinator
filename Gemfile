@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'haml'
 gem 'faraday'
-gem 'miracle_grow', '0.1.8'
+gem 'miracle_grow', '0.2.0'
 
 group :development, :test do
   #gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
@@ -18,6 +18,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'vcr'
+  #gem 'miracle_grow', '0.1.8'
 end
 
 group :development do
