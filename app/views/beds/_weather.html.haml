@@ -1,0 +1,18 @@
+.weather-panel
+  %h1 Today's Weather
+  %ul
+    %li
+      Conditions: 
+      = WeatherService.today[:summary]
+    %li
+      Today's High:  
+      = WeatherService.today[:high_temp].to_s + " °F"
+    %li
+      Overnight Low: 
+      = WeatherService.today[:low_temp].to_s + " °F"
+    %li
+      Chance of rain: 
+      = number_to_percentage(WeatherService.today[:chance_of_rain], precision: 0)
+    %li
+      Dew Point: 
+      = WeatherService.today[:dew_point].to_s + " °F"
