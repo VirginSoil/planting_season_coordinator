@@ -42,7 +42,7 @@ class BedsController < ApplicationController
   end
 
   def create
-    response = Faraday.post('#{host}/api/v1/beds') do |req|
+    response = Faraday.post("#{host}/api/v1/beds") do |req|
       request = params
       req.body = params
     end
