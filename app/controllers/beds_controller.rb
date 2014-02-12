@@ -46,8 +46,8 @@ class BedsController < ApplicationController
     end
   end
 
-  def log_out
-    cookie.delete(:user_id)
+  def logout
+    cookies[:user_id] = nil
     redirect_to "/"
   end
 
