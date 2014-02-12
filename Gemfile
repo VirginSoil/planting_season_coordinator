@@ -36,4 +36,5 @@ end
 group :production do
   gem 'execjs'
   gem 'therubyracer'
+  gem 'rake'
 end
