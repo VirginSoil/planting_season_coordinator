@@ -19,7 +19,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'vcr'
-  #gem 'miracle_grow', '0.1.8'
 end
 
 group :development do

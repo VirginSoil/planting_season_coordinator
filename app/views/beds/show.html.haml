@@ -24,7 +24,6 @@
             - @bed['depth'].times do |j|
               %td{:class => "square-foot empty", :id => "bed-#{i}-#{j}"}
                 %span
-    = render 'beds/bed_view_form'
 
 .side-content.four.columns
   %div
@@ -53,5 +52,8 @@
           ="Days to Germination: #{plant['days_to_germination']}"
         %li
           ="Planting Depth: #{plant['depth']}\""
-  - if @weather          
+  - if @weather
     = render 'beds/weather'
+
+#footer.eight.columns
+  = render 'layouts/footer'
