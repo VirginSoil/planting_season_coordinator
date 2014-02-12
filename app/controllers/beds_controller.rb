@@ -5,6 +5,7 @@ class BedsController < ApplicationController
   end
 
   def show
+    # raise env["SERVER_NAME"]
     make_sure_shes_got_a_bed
     decide_which_bed_to_use
     session[:current_bed] = @bed['id']

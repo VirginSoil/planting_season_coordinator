@@ -103,7 +103,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
-    miracle_grow (0.1.1)
+    miracle_grow (0.1.8)
       faraday
       json
     multi_json (1.8.4)
@@ -218,7 +218,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   launchy
-  miracle_grow (= 0.1.1)
+  miracle_grow (= 0.1.8)
   pg
   phantomjs
   poltergeist

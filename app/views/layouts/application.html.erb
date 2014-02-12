@@ -22,6 +22,9 @@
 
   <%= yield %>
 
+  <%= javascript_tag do %>
+    window.hostName = '<%= j request.host %>';
+  <% end %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "urlify" %>
   <%= javascript_include_tag "utilities" %>
