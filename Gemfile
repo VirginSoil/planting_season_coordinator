@@ -9,6 +9,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'haml'
 gem 'faraday'
+gem 'miracle_grow', '0.1.1'
 
 group :development, :test do
   #gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'

@@ -270,9 +270,4 @@ $(function(){
     $('#plant-info').html(plantInfo);
   }
 
-  function parseId(id) {
-    return id.split("-").slice(1,3);
-  }
-
-
 });
