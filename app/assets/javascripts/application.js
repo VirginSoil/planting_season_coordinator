@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_self
+//= require urlify
+//= require utilities
+//= require welcome
+//= require api_calls
+//= require views
+//= require load_plantings
+//= require routes 
+//= require dragging 
 
 var hostName = $('#host-name').html().replace(/\s+/g, "");
