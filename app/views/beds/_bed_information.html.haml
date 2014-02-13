@@ -1,7 +1,7 @@
 .bed-information
   %h3
     = @bed['name']
-  =link_to "Edit Bed Details", edit_bed_path(@bed['id'])
+  = link_to "Edit Bed Details", edit_bed_path(@bed['id']), :class => "small button"
 
   %h5 Dimensions:
   %p
@@ -16,9 +16,9 @@
   %h5 Notes:
   %p{:id => "loaded-notes"}
     = @bed['notes']
-  %button{:id => "edit-notes-button"} Edit Notes
+  %button{:id => "edit-notes-button", :class => "button small"} Edit Notes
   %textarea{:id => "bed-notes-form"}
-  %button{:id => "save-notes-button"} Save Notes
+  %button{:id => "save-notes-button", :class => "button small"} Save Notes
   %br
 
 

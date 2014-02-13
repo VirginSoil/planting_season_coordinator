@@ -5,14 +5,14 @@
         My Gardens
     - unless request.path == "/dashboard/beds/new"
       %li
-        %a.new-garden-link{href: "/dashboard/beds/new"}
+        %a.new-garden{href: "/dashboard/beds/new"}
           New Garden
     - if @bed.kind_of?(Hash)
       %li
         %a.notifications{href: "#"}
           Notifications
     %li.user.parent
-      %span 
+      %span
         = cookies[:username]
       %ul.children
         /%li.child

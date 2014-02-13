@@ -6,6 +6,7 @@ $nove_book: 'novecento_sans_widebook';
 body {
   //background: #fff url("../gardens.png") no-repeat center top;
   //background: #fff url("../gardens.png") no-repeat right top;
+  background: #fafafa;
 }
 
 .wrapper {
@@ -145,9 +146,17 @@ $c: #e5e5e5;
   text-indent: -9999px;
 }
 
+.new-garden {
+  display: block;
+  background: image-url('icon-plus.png') center 32px no-repeat;
+  width: 22px;
+  height: 22px;
+  text-indent: -9999px;
+}
+
 .notifications {
   display: block;
-  background: image-url('icon-weather.png') center 31px no-repeat;
+  background: image-url('icon-weather.png') center 33px no-repeat;
   width: 25px;
   height: 28px;
   text-indent: -9999px;
@@ -347,7 +356,8 @@ $c: #e5e5e5;
   display: block;
   z-index: 999;
   position: absolute;
-  top: 20px;
+  top: 27px;
+  right: 120px;
   background: transparent;
   li {
     float: none;
@@ -362,4 +372,29 @@ $c: #e5e5e5;
 #footer {
   margin-top: 2%;
   margin-bottom: 2%;
+}
+
+.button.small {
+  margin: 5px 0;
+  display: inline-block;
+  font-size: 15px;
+  background: #ccc;
+  color: #606472;
+  border: solid 1px #888;
+  &:hover {
+    cursor: pointer;
+    background: #606472;
+    color: #fafafa;
+  }
+}
+
+.weather-panel {
+  padding: 10px 20px;
+  border: solid 1px #ddd;
+  top: -26% !important;
+  box-shadow: 0px 0px 2px #777;
+  h1 {
+    font-size: 18px;
+    font-family: $nove_light;
+  }
 }
