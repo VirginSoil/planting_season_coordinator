@@ -1,10 +1,11 @@
 function toggleSquare(thisClass, element) {
-  if ( thisClass == 'square-foot planted') {
+  if ( thisClass === 'square-foot planted' || thisClass === 'square-foot planted harvested') {
     selectPlanted(element);
     showPlantingDetails(element);
-  } else if (thisClass == 'square-foot active planted') {
+  } else if (thisClass === 'square-foot planted active' || thisClass == 'square-foot planted harvested active') {
+    alert(thisClass);
     deselectPlanted(element);
-  } else if (thisClass == 'square-foot active empty') {
+  } else if (thisClass === 'square-foot active empty') {
     deselectUnplanted(element);
   } else {
     selectUnplanted(element);
@@ -12,23 +13,23 @@ function toggleSquare(thisClass, element) {
 }
 
 function selectPlanted(element) {
-  element.attr('class', 'square-foot active planted');
+  element.addClass('active');
   showPlantActionsPanel();
   showPlantingDetails(element);
 }
 
 function deselectPlanted(element) {
-  element.attr('class', 'square-foot planted');
+  element.removeClass('active');
   showBedInfoPanel();
 }
 
 function selectUnplanted(element) {
-  element.attr('class', 'square-foot active empty');
+  element.addClass('active');
   showNewPlantPanel();
 }
 
 function deselectUnplanted(element) {
-  element.attr('class', 'square-foot empty');
+  element.removeClass('active');
   showBedInfoPanel();
 }
 

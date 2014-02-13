@@ -18,6 +18,7 @@ $(function(){
           if (takenSpots[j][3] === false) {
             $(span).append('<img src="' + hostName + '/dashboard/assets/goodveg/' + slug + '.jpg">');
           } else {
+            $(allTheSquares[i]).addClass('harvested');
             $(span).append('<img src="' + hostName + '/dashboard/assets/goodveg/' + slug + '-harvested.jpg">');
           }
         }

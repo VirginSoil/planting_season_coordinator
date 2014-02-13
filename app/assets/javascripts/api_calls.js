@@ -52,11 +52,12 @@ function harvestPlanting() {
     success: function(response) {
       var slug = response["slug"];
       var element = $('.square-foot.active.planted');
-      element.toggleClass('harvested');
       if (response.harvested === true) {
         element.children('span').html('<img src="' + hostName + '/dashboard/assets/goodveg/' + slug + '-harvested.jpg">');
+        element.addClass('harvested').removeClass('active');
       } else {
         element.children('span').html('<img src="' + hostName + '/dashboard/assets/goodveg/' + slug + '.jpg">');
+        element.removeClass('harvested').removeClasse('active');
       }
     },
     error: function(response) {
