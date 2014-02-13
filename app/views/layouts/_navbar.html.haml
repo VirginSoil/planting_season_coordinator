@@ -3,6 +3,10 @@
     %li
       %a.my-gardens{href: "/dashboard/beds"}
         My Gardens
+    - unless request.path == "/dashboard/beds/new"
+      %li
+        %a.new-garden-link{href: "/dashboard/beds/new"}
+          New Garden
     - if @bed.kind_of?(Hash)
       %li
         %a.notifications{href: "#"}
