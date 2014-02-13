@@ -5,7 +5,7 @@ function toggleSquare(thisClass, element) {
   } else if (thisClass === 'square-foot planted active' || thisClass == 'square-foot planted harvested active') {
     alert(thisClass);
     deselectPlanted(element);
-  } else if (thisClass === 'square-foot active empty') {
+  } else if (thisClass === 'square-foot empty active') {
     deselectUnplanted(element);
   } else {
     selectUnplanted(element);
